@@ -42,7 +42,60 @@ document.addEventListener("DOMContentLoaded", function () {
      farms: [
       { id: 'MOUSSEUX', name: 'Mousseux', gamme: 'classic', symbol: '🧽', products: [] },
       { id: 'FILTRE', name: 'Filtré', gamme: 'classic', symbol: '🔎', products: [] },
-      { id: 'FROZEN', name: 'Frozen', gamme: 'premium', symbol: '🧊', products: [] },
+      { id: 'FROZEN', name: 'Frozen', gamme: 'premium', symbol: '🧊', products: [
+        {
+                            id: '🫒🧊 RS11',
+                            flag: '🇺🇸',
+                            name: '🫒🧊 RS11',
+                            farm: '🚜 THERPS INDUSTRY 👑',
+                            promoEligible: false,
+                            type: 'Frozen Sift 🧊🫒',
+                            image: 'ProductRS.png',
+                            video: 'VideoRS.mp4',
+                            description: `🫒🧊 RS11 - Frozen Sift 🧊🫒
+💎 Ultra Frozen - Format 10G 💎
+🚜 THERPS INDUSTRY 👑
+☄️ Profil onctueusement crémeuse
+🍬 Notes sucrées et fruitées 🥭
+
+☘️Terpènes Préservés ☘️ • sèches et onctueuse 🍨
+✨ Sélection Premium, soigneusement sélectionnée » 
+
+©️🥇 Exclusivité Room Service 🥇©️`,
+                            tarifs: [
+                                { weight: 'Demi Olive', price: 70.00 },
+                                { weight: '1 Olive', price: 130.00 },
+                                { weight: '2 Olives', price: 230.00 },
+                                { weight: '5 Olives', price: 480.00 },
+                            ]
+                        },
+        {
+                            id: '🫒🧊 PANACOTA',
+                            flag: '🇺🇸',
+                            name: '🫒🧊 PANACOTA',
+                            farm: '🚜 THERPS INDUSTRY 👑',
+                            promoEligible: false,
+                            type: 'Frozen Sift 🧊🫒',
+                            image: 'ProductPA.jpg',
+                            video: 'VideoPA.mp4',
+                            description: `🫒🧊 PANACOTA - Frozen Sift 🧊🫒
+💎 Ultra Frozen - Format 10G 💎
+🚜 THERPS INDUSTRY 👑
+☄️ Profil exotique et puissance marqué 
+🍦 Notes douces vanillées • terreuses
+
+☘️ Terpènes préservés 🌿 • sèches et petantes 🧨
+✨ « Sélection Premium , Limited Édition » ✨
+
+©️🥇 Exclusivité Room Service 🥇©️`,
+                            tarifs: [
+                                { weight: 'Demi Olive', price: 70.00 },
+                                { weight: '1 Olive', price: 130.00 },
+                                { weight: '2 Olives', price: 230.00 },
+                                { weight: '5 Olives', price: 480.00 },
+                            ]
+                        },
+      ] },
       { id: 'OLIVE_FROZEN', name: 'Olive Frozen', gamme: 'premium', symbol: '🫒', products: [] },
       { id: 'STATIC_DOUBLE_STATIC', name: 'Static / Double Static', gamme: 'premium', symbol: '🔮', products: [] }
      ]
