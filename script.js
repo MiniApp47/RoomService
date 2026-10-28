@@ -24,153 +24,56 @@ document.addEventListener("DOMContentLoaded", function () {
     snapchat: ""    // Snapchat officiel
   };
 
-  // renseigne son URL HTTPS ici. Sinon, laisse la valeur vide.
-  const REVIEW_API_BASE = "";
-
-  const appData = [
- {
-      id: 'WEED',
-      name: ' 🍀 Weed 🍀',
-      farm: '',
-      type: 'Weed',
-      quality: ' 🍀 Weed 🍀',
-      image: 'CategWeed.png',
-      directToProducts: true,
-      farms: [
-        {
-          id: 'CALI_USA',
-          name: 'CALI TOP SHELF 🇺🇸',
-          image: '',
-          badgeText: '1 produit',
-          products: [
-            /* {
-              id: 'Hawaian Runtz 🍇🍭',
-              name: 'Hawaian Runtz 🍇🍭',
-              farm: 'CALI NL TOP SHELF 🇺🇸',
-              promoEligible: false,
-              type: '🪴 Weed 🪴',
-              image: 'ProductHR.png',
-              video: 'VideoHR.mp4',
-              description: 'Goût Saveurs Gazy Fruit Puissant 🥭⛽️ Qualité Top Shelf 🌈 Odeur De Fou Bien Compacte 🏆🤠',
-              tarifs: [
-                { weight: '5g', price: 70.00 },
-                { weight: '10g', price: 130.00 },
-                { weight: '25g', price: 270.00 },
-                { weight: '50g', price: 400.00 },
-                { weight: '100g', price: 750.00 }
-              ]
-            } */
-            /* {
-              id: 'Peach Oz',
-              name: 'Peach Oz 🍑',
-              farm: 'CALI NL TOP SHELF 🇺🇸🇳🇱',
-              promoEligible: false,
-              type: '🪴 Weed 🪴',
-              image: 'ProductPZZ.png',
-              video: 'VideoPZZ.mp4',
-              description: 'Déjà Victime De Son Succès 🌈💥 Cali Hollandaise 🇳🇱 Du Vrai Crack 💨 Goût Incroyable 🇺🇸🍑🍓 Bien Compacte ☄️ La Fusée 🚀',
-              tarifs: [
-                { weight: '5g', price: 70.00 },
-                { weight: '10g', price: 130.00 },
-                { weight: '25g', price: 250.00 },
-                { weight: '50g', price: 400.00 },
-                { weight: '100g', price: 750.00 }
-              ]
-            } */
-          ]
-        }
-      ]
-    },
-    // --- Catégorie 1: HASH ---
+   // ===========================================================
+   // COLLECTIONS ROOM SERVICE
+   // Les catégories restent visibles même lorsque leurs produits sont vides.
+   // gammes : "classic" ou "premium".
+   // Pour HASH : gamme imposée par la sous-catégorie.
+   // Pour WEED : préciser gamme sur chaque produit, car les deux
+   //             sous-catégories peuvent exister dans les deux gammes.
+   // ===========================================================
+   const appData = [
     {
-      id: 'HASH',
-      name: '🍫 Hash 🍫',
-      farm: '',
-      type: 'Hash',
-      quality: ' 🍫 Hash 🍫',
-      image: 'CategHash.png',
-      directToProducts: false,
-      farms: [
-         {
-          id: 'STATIC_2',
-          name: '2️⃣ Double Static 🧤',
-          image: '',
-          badgeText: '1 produit',
-          products: [
-           /*  {
-              id: 'Grace Gas 🍇⛽️',
-              name: 'Grace Gas 🍇⛽️',
-              farm: 'ROYAL RIF 🇲🇦',
-              promoEligible: false,
-              type: 'Hash',
-              image: 'ProductGGG.png',
-              video: 'VideoGG.mp4',
-              description: 'Goût & Terps Excellent Bien Gazyyy ⛽️ Vrai Double Static 🧤 Du Feu Produit Certifié ⭐️ Haute Qualité 💎',
-              tarifs: [
-                { weight: '3g', price: 60.00 },
-                { weight: '5g', price: 90.00 },
-                { weight: '10g', price: 160.00 },
-                { weight: '25g', price: 330.00 },
-                { weight: '50g', price: 580.00 },
-                { weight: '100g', price: 950.00 },
-              ]
-            }, */
-          ]
-        },
-        {
-          id: 'PREMIUM',
-          name: 'TOP DRY 👩‍🌾',
-          image: '',
-          badgeText: '2 produits',
-          products: [
-          /*   {
-              id: 'Premium Drysift⭐️',
-              name: 'Premium Drysift⭐️',
-              farm: 'HASH FORCE ONE 🇺🇸 ',
-              promoEligible: false,
-              type: 'Hash',
-              image: 'ProductPD.png',
-              video: 'VideoPD.mp4',
-              description: 'Top Qualité 🏆 Plaque de 50g 🏆',
-              tarifs: [
-                { weight: '10g', price: 170.00 },
-                { weight: '25g', price: 350.00 },
-                { weight: '50g', price: 650.00 },
-                { weight: '100g', price: 1200.00 },
-              ]
-            }, */
-          ]
-        },
-        {
-          id: 'FROZEN',
-          name: 'FRESH FROZEN 🧊',
-          image: '',
-          badgeText: '1 produit',
-          products: [
-            
-          ]
-        },
-        {
-          id: 'STATIC_1',
-          name: 'STATIC USA 🇺🇸',
-          image: '',
-          badgeText: '1 produit',
-          products: [
-          ]
-        },
-        {
-          id: 'WPFF',
-          name: 'WPFF 💎',
-          image: '',
-          badgeText: '1 produit',
-          products: [
-            
-          ]
-        }
-      ]
+     id: 'HASH',
+     name: 'Hash',
+     type: 'Hash',
+     image: 'CategHash.png',
+     directToProducts: false,
+     farms: [
+      { id: 'MOUSSEUX', name: 'Mousseux', gamme: 'classic', symbol: '🧽', products: [] },
+      { id: 'FILTRE', name: 'Filtré', gamme: 'classic', symbol: '🔎', products: [] },
+      { id: 'FROZEN', name: 'Frozen', gamme: 'premium', symbol: '🧊', products: [] },
+      { id: 'OLIVE_FROZEN', name: 'Olive Frozen', gamme: 'premium', symbol: '🫒', products: [] },
+      { id: 'STATIC_DOUBLE_STATIC', name: 'Static / Double Static', gamme: 'premium', symbol: '🔮', products: [] }
+     ]
     },
-
-  ];
+    {
+     id: 'WEED',
+     name: 'Weed',
+     type: 'Weed',
+     image: 'CategWeed.png',
+     directToProducts: false,
+     farms: [
+      // Pas de gamme imposée pour la Weed : Classic ou Premium
+      // se choisit au niveau de chaque fiche produit.
+      { id: 'HOLLANDAISE_COFFEE', name: 'Hollandaise Coffee', gamme: 'classic', symbol: '🇳🇱', products: [] },
+      { id: 'CALI_USA', name: 'Cali USA', gamme: 'premium', symbol: '🇺🇸', products: [] }
+     ]
+    },
+    {
+     id: 'NEIGE',
+     name: 'Neige',
+     type: 'Neige',
+     image: 'CategNeige.png',
+     directToProducts: false,
+     farms: [
+      // Pas de gamme imposée pour la Weed : Classic ou Premium
+      // se choisit au niveau de chaque fiche produit.
+      { id: 'SURINAMAISE', name: 'Surinamaise', gamme: 'classic', symbol: '🇸🇷', products: [] },
+      { id: 'BOLIVIENNE', name: 'Bolivienne', gamme: 'premium', symbol: '🇧🇴', products: [] },
+     ]
+    }
+   ];
 
  // Contacts : affichés uniquement si les liens officiels sont renseignés ci-dessus.
  const officialContacts = [
@@ -196,6 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
     product.category = category;
     product.farmName = farm.name;
     product.farmId = farm.id;
+    product.gamme = String(farm.gamme || product.gamme || "classic").toLowerCase() === "premium" ? "premium" : "classic";
     allProducts.push(product);
    });
   });
@@ -209,13 +113,11 @@ document.addEventListener("DOMContentLoaded", function () {
  let currQty = 1;
  let checkoutMode = "Livraison";
  let currentCategory = null;
- let selectedReviewRating = 5;
- let approvedReviews = [];
+ let currentGamme = 'classic';
+ let selectedSubtype = 'ALL';
  window.lastListPage = "home";
 
  const contactUrl = String(ROOM_SERVICE_CONFIG?.telegram || "").replace(/\/$/, "");
- const reviewApiBase = String(REVIEW_API_BASE || "").replace(/\/$/, "");
- const reviewApiUrl = reviewApiBase ? reviewApiBase + "/api/reviews" : "/api/reviews";
 
  function money(n) {
   return Number(n || 0).toFixed(2).replace(".00", "") + "€";
@@ -249,21 +151,6 @@ document.addEventListener("DOMContentLoaded", function () {
   return txt.length > max ? txt.slice(0, max - 1) + "…" : txt;
  }
 
- function escapeHTML(value) {
-  return String(value ?? "")
-   .replace(/&/g, "&amp;")
-   .replace(/</g, "&lt;")
-   .replace(/>/g, "&gt;")
-   .replace(/"/g, "&quot;")
-   .replace(/'/g, "&#039;");
- }
-
- function publicAuthorFallback() {
-  const u = tg.initDataUnsafe?.user;
-  if (!u) return "Membre";
-  return u.username ? `@${u.username}` : (u.first_name || "Membre");
- }
-
  function haptic(type = "light") {
   try { tg.HapticFeedback?.impactOccurred(type); } catch(e) {}
  }
@@ -271,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
  function productMatches(product, query) {
   if (!query) return true;
   const q = query.toLowerCase().trim();
-  const haystack = [product.name, product.farm, product.farmName, product.type, product.category?.name, product.description]
+  const haystack = [product.name, product.farm, product.farmName, product.type, product.category?.name, product.description, product.gamme === 'premium' ? 'gamme premium' : 'gamme classic']
    .join(" ").toLowerCase();
   return haystack.includes(q);
  }
@@ -299,7 +186,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (normalized === "cart") renderCart();
   if (normalized === "favorites") renderFavorites();
   if (normalized === "checkout") renderCheckout();
-  if (normalized === "reviews") renderReviews();
  };
 
  function createCategoryCard(category) {
@@ -309,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <span class="open-badge">›</span>
     <img src="${category.image || 'RoomServiceLogo.jpg'}" alt="${category.name}">
     <div class="title">${category.name}</div>
-    <div class="meta">${total} produit${total > 1 ? 's' : ''} · ${category.directToProducts ? 'direct' : 'sous-catégories'}</div>
+    <div class="meta">2 gammes · ${category.farms.length} sous-catégories</div>
    </div>`;
  }
 
@@ -339,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
      <button class="fav-chip ${isFav ? 'active' : ''}" aria-label="Favori" onclick="event.stopPropagation(); toggleFavorite(decodeURIComponent('${safeId}'))">${favoriteIconHTML(isFav)}</button>
     </div>
     <div class="prod-info">
-     <div class="prod-badge">${shortText(badge, 30)}</div>
+     <div class="prod-label-row"><div class="prod-badge">${shortText(badge, 30)}</div><span class="prod-gamme-pill ${product.gamme === 'premium' ? 'is-premium' : ''}">Gamme ${product.gamme === 'premium' ? 'Premium' : 'Classic'}</span></div>
      <div class="prod-title">${product.name}</div>
      <div class="prod-farm">Collection : ${shortText(product.farm || product.farmName, 42)}</div>
      <div class="prod-card-bottom">
@@ -374,38 +260,113 @@ document.addEventListener("DOMContentLoaded", function () {
   renderHome(results);
  });
 
+ // La gamme est le premier niveau, puis on choisit une sous-catégorie.
+ function farmsForCurrentGamme() {
+  if (!currentCategory) return [];
+  return currentCategory.farms.filter(f => !f.gamme || f.gamme === currentGamme);
+ }
+
+ function productsInFarmAndGamme(farm) {
+  return (farm.products || []).filter(p => p.gamme === currentGamme);
+ }
+
+ function updateGammeUI() {
+  const switcher = document.getElementById('gamme-switch');
+  if (switcher) switcher.querySelectorAll('[data-gamme]').forEach(btn => {
+   const active = btn.dataset.gamme === currentGamme;
+   btn.classList.toggle('active', active);
+   btn.setAttribute('aria-pressed', String(active));
+  });
+  const title = document.getElementById('gamme-selected-label');
+  if (title) title.textContent = currentGamme === 'premium' ? 'Gamme Premium' : 'Gamme Classic';
+  const copy = document.getElementById('gamme-selected-desc');
+  if (copy) copy.textContent = currentGamme === 'premium' ? 'La sélection prestige de Room Service.' : 'Les essentiels de la collection Room Service.';
+
+  const select = document.getElementById('cat-type-select');
+  const farms = farmsForCurrentGamme();
+  if (select) {
+   select.innerHTML = '<option value="ALL">Toutes les sous-catégories</option>' +
+    farms.map(f => `<option value="${f.id}">${f.name}</option>`).join('');
+   select.value = farms.some(f => f.id === selectedSubtype) ? selectedSubtype : 'ALL';
+   selectedSubtype = select.value;
+  }
+ }
+
+ window.switchGamme = function(gamme) {
+  if (!['classic', 'premium'].includes(gamme)) return;
+  currentGamme = gamme;
+  selectedSubtype = 'ALL';
+  updateGammeUI();
+  renderCategoryProducts();
+  haptic();
+ };
+
+ window.selectSubtype = function(id) {
+  const available = farmsForCurrentGamme();
+  if (id !== 'ALL' && !available.some(f => f.id === id)) return;
+  selectedSubtype = selectedSubtype === id ? 'ALL' : id;
+  const select = document.getElementById('cat-type-select');
+  if (select) select.value = selectedSubtype;
+  renderCategoryProducts();
+  haptic();
+ };
+
  window.openCategory = function(catId) {
   currentCategory = appData.find(c => c.id === catId);
   if (!currentCategory) return;
-  window.lastListPage = "cat-list";
+  currentGamme = 'classic';
+  selectedSubtype = 'ALL';
+  window.lastListPage = 'cat-list';
 
-  document.getElementById("cat-list-title").innerText = currentCategory.name;
-  document.getElementById("cat-banner-img").src = currentCategory.image || "RoomServiceLogo.jpg";
-  document.getElementById("cat-banner-bg").src = currentCategory.image || "RoomServiceLogo.jpg";
-
-  const select = document.getElementById("cat-type-select");
-  const activeFarms = currentCategory.farms.filter(f => f.products.length || !currentCategory.directToProducts);
-  select.innerHTML = `<option value="ALL">✨ Tout afficher</option>` + activeFarms.map(f => `<option value="${f.id}">${f.name} (${f.products.length})</option>`).join("");
-  select.style.display = currentCategory.directToProducts ? "none" : "block";
-  document.getElementById("cat-search").value = "";
+  document.getElementById('cat-list-title').innerText = currentCategory.name;
+  document.getElementById('cat-banner-img').src = currentCategory.image || 'RoomServiceLogo.jpg';
+  document.getElementById('cat-banner-bg').src = currentCategory.image || 'RoomServiceLogo.jpg';
+  document.getElementById('cat-search').value = '';
+  updateGammeUI();
   renderCategoryProducts();
-  navigate("cat-list");
+  navigate('cat-list');
  };
 
  function renderCategoryProducts() {
   if (!currentCategory) return;
-  const selectedFarm = document.getElementById("cat-type-select").value || "ALL";
-  const query = document.getElementById("cat-search").value || "";
-  let products = [];
-  currentCategory.farms.forEach(farm => {
-   if (selectedFarm === "ALL" || farm.id === selectedFarm) products.push(...farm.products);
-  });
-  products = products.filter(p => productMatches(p, query));
-  document.getElementById("cat-list-grid").innerHTML = products.map(p => createCardHTML(p, false)).join("") || emptyState("La collection sera ajoutée prochainement.");
+  const farms = farmsForCurrentGamme();
+  const selectedFarm = selectedSubtype;
+  const query = document.getElementById('cat-search')?.value || '';
+  const categoryNav = document.getElementById('subcategory-list');
+  if (categoryNav) {
+   categoryNav.innerHTML = farms.map(f => {
+    const count = productsInFarmAndGamme(f).length;
+    const active = selectedFarm === f.id;
+    return `<button type="button" class="subtype-card${active ? ' active' : ''}" aria-pressed="${active}" onclick="selectSubtype('${f.id}')">
+      <span class="subtype-symbol">${f.symbol || '✦'}</span>
+      <span class="subtype-name">${f.name}</span>
+      <span class="subtype-count">${count} article${count > 1 ? 's' : ''}</span>
+     </button>`;
+   }).join('');
+  }
+
+  const products = farms
+   .filter(farm => selectedFarm === 'ALL' || farm.id === selectedFarm)
+   .flatMap(farm => productsInFarmAndGamme(farm))
+   .filter(p => productMatches(p, query));
+
+  const count = document.getElementById('gamme-products-count');
+  if (count) count.textContent = `${products.length} article${products.length > 1 ? 's' : ''}`;
+  const grid = document.getElementById('cat-list-grid');
+  grid.innerHTML = products.map(p => createCardHTML(p, false)).join('') ||
+    `<div class="empty-state collection-awaiting" style="grid-column:1/-1">
+      <span class="awaiting-symbol">♛</span>
+      <strong>${selectedFarm === 'ALL' ? 'Collection à venir' : 'Pièces à venir'}</strong>
+      <span>Les articles de la ${currentGamme === 'premium' ? 'Gamme Premium' : 'Gamme Classic'} seront bientôt présentés.</span>
+     </div>`;
  }
 
- document.getElementById("cat-type-select")?.addEventListener("change", () => { renderCategoryProducts(); haptic(); });
- document.getElementById("cat-search")?.addEventListener("input", renderCategoryProducts);
+ document.getElementById('cat-type-select')?.addEventListener('change', e => {
+  selectedSubtype = e.target.value;
+  renderCategoryProducts();
+  haptic();
+ });
+ document.getElementById('cat-search')?.addEventListener('input', renderCategoryProducts);
 
  function productVideoControlsHTML() {
   return `
@@ -489,7 +450,12 @@ document.addEventListener("DOMContentLoaded", function () {
    hideProductVideoControls();
   }
 
-  document.getElementById("p-type").innerText = safeText(currentProd.type, "Premium");
+  document.getElementById("p-type").innerText = safeText(currentProd.type, "Collection");
+  const gammeChip = document.getElementById('p-gamme');
+  if (gammeChip) {
+   gammeChip.textContent = currentProd.gamme === 'premium' ? 'Gamme Premium' : 'Gamme Classic';
+   gammeChip.classList.toggle('is-premium', currentProd.gamme === 'premium');
+  }
   document.getElementById("p-name").innerText = currentProd.name;
   document.getElementById("p-farm").innerText = "Collection : " + safeText(currentProd.farm || currentProd.farmName, "Non renseignée");
   document.getElementById("p-subtype").innerText = safeText(currentProd.farmName, "-");
@@ -616,153 +582,6 @@ document.addEventListener("DOMContentLoaded", function () {
   window.open(contactUrl + "?text=" + encodeURIComponent(msg), "_blank");
  });
 
- function renderReviewStars() {
-  document.querySelectorAll("#review-stars button").forEach(btn => {
-   const rating = Number(btn.dataset.rating);
-   btn.classList.toggle("active", rating <= selectedReviewRating);
-  });
- }
-
- function starsText(rating) {
-  const r = Math.max(1, Math.min(5, Number(rating) || 5));
-  return "★".repeat(r) + "☆".repeat(5 - r);
- }
-
- function reviewDateLabel(value) {
-  if (!value) return "";
-  const d = new Date(value);
-  if (Number.isNaN(d.getTime())) return "";
-  return d.toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit" });
- }
-
- function createReviewHTML(review) {
-  const author = escapeHTML(review.author || "Membre");
-  const text = escapeHTML(review.text || review.message || "Avis validé.");
-  const rating = Math.max(1, Math.min(5, Number(review.rating) || 5));
-  const initial = author.replace("@", "").trim().charAt(0).toUpperCase() || "M";
-  const date = reviewDateLabel(review.approved_at || review.created_at);
-  return `
-   <div class="review-item approved">
-    <div class="review-avatar">${escapeHTML(initial)}</div>
-    <div style="flex:1;min-width:0">
-     <div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
-      <b>${author}</b>
-      ${date ? `<span class="review-date">${escapeHTML(date)}</span>` : ""}
-      <span class="review-approved-chip">✓ Validé</span>
-     </div>
-     <div style="color:var(--green);font-size:.78rem;margin-top:4px">${starsText(rating)}</div>
-     <p class="tiny" style="margin:7px 0 0;line-height:1.55">${text}</p>
-    </div>
-   </div>`;
- }
-
- function updateReviewSummary(reviews) {
-  const scoreEl = document.getElementById("rating-score");
-  const starsEl = document.getElementById("rating-stars");
-  const countEl = document.getElementById("review-count-label");
-  const bars = [document.getElementById("bar-service"), document.getElementById("bar-quality"), document.getElementById("bar-response")];
-  if (!scoreEl || !starsEl || !countEl) return;
-
-  if (!reviews.length) {
-   scoreEl.innerText = "—";
-   starsEl.innerText = "☆☆☆☆☆";
-   countEl.innerText = "Aucun avis validé";
-   bars.forEach((bar) => { if (bar) bar.style.width = "0%"; });
-   return;
-  }
-
-  const avg = reviews.reduce((sum, r) => sum + (Number(r.rating) || 5), 0) / reviews.length;
-  const rounded = Math.max(1, Math.min(5, Math.round(avg)));
-  scoreEl.innerText = avg.toFixed(1);
-  starsEl.innerText = starsText(rounded);
-  countEl.innerText = `${reviews.length} avis validé${reviews.length > 1 ? "s" : ""}`;
-  const pct = Math.max(20, Math.min(100, (avg / 5) * 100));
-  bars.forEach((bar, i) => { if (bar) bar.style.width = Math.max(20, pct - i * 3) + "%"; });
- }
-
- async function loadApprovedReviews() {
-  try {
-   const res = await fetch(reviewApiUrl, { cache: "no-store" });
-   if (!res.ok) throw new Error("API avis indisponible");
-   const data = await res.json();
-   const list = Array.isArray(data) ? data : (Array.isArray(data.reviews) ? data.reviews : []);
-   approvedReviews = list;
-  } catch (e) {
-   approvedReviews = [];
-  }
-  return approvedReviews;
- }
-
- async function renderReviews() {
-  const listEl = document.getElementById("reviews-list");
-  if (!listEl) return;
-  listEl.innerHTML = `<div class="empty-state" style="padding:28px 0">Chargement des avis...</div>`;
-  const reviews = await loadApprovedReviews();
-  updateReviewSummary(reviews);
-  if (!reviews.length) {
-   listEl.innerHTML = `<div class="empty-state" style="padding:28px 0">Aucun avis validé pour le moment.</div>`;
-   return;
-  }
-  listEl.innerHTML = reviews.map(createReviewHTML).join("");
- }
-
- function sendReviewToTelegramPanel(payload) {
-  const status = document.getElementById("review-send-status");
-  const messageInput = document.getElementById("review-message");
-
-  if (window.Telegram?.WebApp?.sendData) {
-   try {
-    window.Telegram.WebApp.sendData(JSON.stringify(payload));
-    if (status) {
-     status.className = "tiny ok";
-     status.innerText = "Avis envoyé au panel Telegram. Il apparaîtra après validation.";
-    }
-    if (messageInput) messageInput.value = "";
-    try { window.Telegram.WebApp.showAlert("Avis envoyé au panel ✅"); } catch(e) {}
-    haptic("medium");
-    return true;
-   } catch(e) {}
-  }
-
-  const msg = `Salut, je veux laisser un avis.
-
-Note : ${starsText(payload.rating)}
-Pseudo : ${payload.author}
-Avis : ${payload.text}`;
-  if (!contactUrl) {
-   if (status) { status.className = "tiny err"; status.innerText = "Ouvre cette page depuis le bot pour envoyer ton avis."; }
-   return false;
-  }
-  window.open(contactUrl + "?text=" + encodeURIComponent(msg), "_blank");
-  if (status) {
-   status.className = "tiny err";
-   status.innerText = "Ouverture Telegram en secours. Pour validation automatique, ouvre le catalogue depuis le bouton du bot.";
-  }
-  return false;
- }
-
- document.querySelectorAll("#review-stars button").forEach(btn => btn.addEventListener("click", (e) => {
-  selectedReviewRating = Number(e.currentTarget.dataset.rating) || 5;
-  renderReviewStars();
-  haptic();
- }));
-
- document.getElementById("send-review-btn")?.addEventListener("click", () => {
-  const text = document.getElementById("review-message")?.value.trim() || "Je suis satisfait du catalogue.";
-  const authorInput = document.getElementById("review-author")?.value.trim();
-  const user = tg.initDataUnsafe?.user;
-  const payload = {
-   action: "submit_review",
-   rating: selectedReviewRating,
-   text,
-   author: authorInput || publicAuthorFallback(),
-   username: user?.username || "",
-   user_id: user?.id || null,
-   created_from: "webapp"
-  };
-  sendReviewToTelegramPanel(payload);
- });
-
  document.querySelectorAll(".nav-btn").forEach(btn => btn.addEventListener("click", () => {
   const page = btn.dataset.target.replace("page-", "");
   navigate(page);
@@ -777,7 +596,5 @@ Avis : ${payload.text}`;
  }
 
  renderHome();
- renderReviewStars();
- renderReviews();
  updateBadge();
 });

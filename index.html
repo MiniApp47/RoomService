@@ -319,13 +319,7 @@
   .profile-avatar { width:104px; height:104px; border-radius:32px; object-fit:cover; border:1px solid rgba(255,255,255,.16); box-shadow:0 0 0 7px rgba(192,146,80,.14),0 20px 55px rgba(231,199,141,.22); }
   .profile-name { margin:14px 0 4px; font-weight:1000; font-size:1.3rem; }
   .profile-rank { color:var(--green); font-weight:900; font-size:.82rem; }
-  .profile-stats, .rating-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:16px; }
-  .rating-grid { grid-template-columns: 1fr; }
-  .line-stat { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:10px 0; }
-  .bar { flex:1; height:8px; background:rgba(255,255,255,.08); border-radius:999px; overflow:hidden; }
-  .bar span { display:block; height:100%; background:linear-gradient(90deg,var(--green),var(--primary-3)); border-radius:inherit; }
-  .review-item { display:flex; gap:12px; align-items:flex-start; border-top:1px solid rgba(255,255,255,.08); padding-top:14px; margin-top:14px; }
-  .review-avatar { width:38px; height:38px; border-radius:50%; display:grid; place-items:center; background:linear-gradient(135deg,var(--primary),var(--primary-2)); font-weight:1000; }
+  .profile-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:16px; }
   .contact-link { display:flex; align-items:center; gap:14px; padding:14px; border-radius:20px; background:rgba(255,255,255,.06); border:1px solid rgba(201,156,91,.28); color:#fff; text-decoration:none; margin-top:10px; }
   .contact-icon { width:42px; height:42px; border-radius:14px; display:grid; place-items:center; background:linear-gradient(135deg,var(--primary),var(--primary-2)); }
   .contact-link b { display:block; }
@@ -412,31 +406,7 @@
   .fav-btn:not(.active) {
    background: rgba(0,0,0,.54) !important;
   }
-  .rating-picker {
-   display: flex;
-   gap: 8px;
-   margin: 14px 0;
-  }
-  .rating-picker button {
-   width: 42px;
-   height: 42px;
-   border-radius: 14px;
-   border: 1px solid rgba(201,156,91,.34);
-   background: rgba(255,255,255,.07);
-   color: rgba(255,255,255,.45);
-   font-size: 1.2rem;
-   font-weight: 1000;
-   cursor: pointer;
-  }
-  .rating-picker button.active {
-   color: var(--primary-2);
-   border-color: rgba(231,199,141,.55);
-   background: rgba(231,199,141,.12);
-   box-shadow: 0 0 22px rgba(231,199,141,.18);
-  }
-
-
-  /* --- FIX V3.2 : recadrage icônes + avis validés --- */
+  /* --- FIX V3.2 : recadrage des icônes --- */
   .hero-social-top .hero-link,
   .contact-icon,
   .round-btn,
@@ -529,45 +499,30 @@
    overflow: hidden !important;
   }
 
-  .review-item.approved {
-   border-top: 1px solid rgba(255,255,255,.08);
-  }
-
-  .review-date {
-   display: inline-block;
-   margin-left: 6px;
-   color: var(--text-soft);
-   font-size: .68rem;
-   font-weight: 800;
-  }
-
-  .review-approved-chip {
-   display: inline-flex;
-   align-items: center;
-   gap: 5px;
-   padding: 4px 8px;
-   border-radius: 999px;
-   background: rgba(71,212,154,.11);
-   color: var(--success);
-   border: 1px solid rgba(71,212,154,.25);
-   font-size: .66rem;
-   font-weight: 1000;
-   margin-left: 6px;
-  }
-
-  #review-send-status.ok { color: var(--success); }
-  #review-send-status.err { color: #ffa694; }
-
-
   /* =============================================================
      ROOM SERVICE — Direction artistique : Noir marbre & Or champagne
      ============================================================= */
   :root { color-scheme: dark; }
-  body {
-   background: radial-gradient(circle at 50% 0%, rgba(166, 115, 53, .13), transparent 32%),
-               linear-gradient(180deg, rgba(7,7,8,.95), rgba(8,8,9,.98) 65%, rgba(7,7,8,.96)),
-               url('RoomServiceNYC.jpg') center top / cover fixed;
-  }
+   body {
+            background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 40%, var(--bg-bottom) 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            background-attachment: fixed;
+            -webkit-tap-highlight-color: transparent;
+
+                /* --- MODIFICATION POUR LE FOND D'ÉCRAN --- */
+            /* Remplace 'fond-ecran.jpg' par le nom de ton image */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('Fondecran.png');
+            background-size: cover;
+            /* L'image couvre tout l'espace */
+            background-position: center center;
+            /* L'image est centrée */
+            background-repeat: no-repeat;
+            /* L'image ne se répète pas */
+            background-attachment: fixed;
+            /* L'image reste fixe au défilement */
+            margin-bottom: 8vh;
+        }
   body::before {
    background: linear-gradient(125deg, transparent 10%, rgba(221,178,105,.037) 35%, transparent 58%);
    animation-duration: 20s;
@@ -641,7 +596,7 @@
   .cat-card,.prod-card,.panel,.stat-card,.filter-panel,.cart-item{border-radius:15px;}
   .prod-card,.cat-card{background:linear-gradient(160deg,#242018,#111111);}
   .prod-img-wrap{background:#0c0b0a;}
-  .btn-main,.details-pill,.nav-item-float.active,.contact-icon,.review-avatar{color:#1c150c;}
+  .btn-main,.details-pill,.nav-item-float.active,.contact-icon{color:#1c150c;}
   .btn-main {border:1px solid rgba(246,217,157,.45);border-radius:12px;}
   .details-pill{border-radius:9px;}
   .nav-floating {background:rgba(15,14,14,.96);border:1px solid rgba(211,167,95,.4);box-shadow:0 13px 35px rgba(0,0,0,.55);}
@@ -659,6 +614,138 @@
   @media(max-width:370px){.hero-name{font-size:2.22rem;}.brand-top-suffix{font-size:.43rem;}.hero-v3{min-height:565px;}.hero-content{min-height:519px;}}
   @media(min-width:700px){.hero-v3{min-height:690px;}.hero-content{max-width:840px;margin:auto;min-height:640px;}.hero-emblem{width:255px;height:260px;}.hero-name{font-size:4rem;}.brand-manifesto,.brand-values,.collection-intro,.collection-empty,#catalogue-section{max-width:800px;margin-left:auto;margin-right:auto;}.brand-manifesto h2{font-size:2.15rem;}}
   @media(prefers-reduced-motion:reduce){body::before{animation:none;}.page,.loader-logo{animation:none;}html{scroll-behavior:auto;}}
+
+
+  /* ROOM SERVICE — Gammes Classic / Premium, sous-catégories */
+  .gamme-header{text-align:center;padding:26px 18px 14px;}
+  .gamme-header h2{font:600 2.05rem 'Cormorant Garamond',serif;color:#f5dfb6;margin:7px 0 3px;}
+  .gamme-header p,.gamme-title-strip p{font-size:.71rem;color:#b8a88e;line-height:1.6;margin:4px 0 0;}
+  .gamme-eyebrow{font-size:.56rem;font-weight:800;letter-spacing:.23em;color:#c9a369;}
+  .gamme-switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 18px 24px;}
+  .gamme-tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;min-height:116px;
+   border:1px solid rgba(211,166,95,.27);border-radius:14px;background:linear-gradient(155deg,#191716,#0e0e10);
+   color:#e9dbbf;font:800 .61rem 'Montserrat',sans-serif;letter-spacing:.08em;cursor:pointer;transition:border-color .15s,transform .15s,background .15s;}
+  .gamme-tab.active{border-color:#dcbc82;background:linear-gradient(155deg,rgba(103,75,39,.52),rgba(20,18,16,.95));box-shadow:inset 0 0 0 1px rgba(223,184,119,.15),0 14px 25px rgba(0,0,0,.20);}
+  .gamme-tab-symbol{font:500 1.65rem 'Cormorant Garamond',serif;color:#d3ac73;line-height:1;}
+  .gamme-tab small{font-size:.59rem;color:#b39d78;letter-spacing:.02em;font-weight:500;}
+  .gamme-tab.active small{color:#ebd3a6;}
+  .gamme-title-strip{padding:0 19px 8px;}
+  .gamme-title-strip h3{font:600 1.85rem 'Cormorant Garamond',serif;color:#f5dbab;margin:5px 0 0;}
+  .subcategory-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:9px 18px 3px;}
+  .subtype-card{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:5px;min-height:103px;
+   padding:14px;background:linear-gradient(145deg,#242019,#101012);border:1px solid rgba(207,167,102,.26);border-radius:13px;
+   color:#efddbc;cursor:pointer;transition:transform .15s,border-color .15s;}
+  .subtype-card.active{border-color:#ebc785;box-shadow:inset 0 0 0 1px rgba(238,192,123,.16);background:linear-gradient(145deg,#35281b,#171513);}
+  .subtype-card:active,.gamme-tab:active{transform:scale(.98);}
+  .subtype-symbol{font:600 1.4rem 'Cormorant Garamond',serif;line-height:1;color:#dbb675;}
+  .subtype-name{font-size:.78rem;font-weight:800;line-height:1.3;}
+  .subtype-count{font-size:.63rem;color:#ad9670;}
+  .products-heading{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:24px 18px 14px;
+   font-size:.6rem;font-weight:800;letter-spacing:.12em;color:#d7b67e;}
+  .products-heading span:last-child{font-weight:500;color:#ad9b80;letter-spacing:0;}
+  .collection-awaiting{border:1px solid rgba(212,167,102,.2);border-radius:14px;padding:35px 24px;
+   background:linear-gradient(150deg,rgba(34,29,22,.88),rgba(9,9,11,.86));display:flex;flex-direction:column;align-items:center;gap:9px;}
+  .awaiting-symbol{font-size:1.7rem;color:#d8b074;}
+  .collection-awaiting strong{font:600 1.48rem 'Cormorant Garamond',serif;color:#edd6ad;}
+  .collection-awaiting span:last-child{font-size:.72rem;line-height:1.5;color:#a99370;}
+  .prod-label-row,.product-chip-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;}
+  .prod-gamme-pill,.product-gamme-chip{display:inline-flex;align-items:center;padding:5px 8px;border-radius:6px;
+   border:1px solid rgba(208,169,104,.35);color:#c9b497;background:rgba(40,32,21,.65);font-size:.6rem;font-weight:800;}
+  .prod-gamme-pill.is-premium,.product-gamme-chip.is-premium{border-color:rgba(233,193,120,.72);color:#fae5b6;
+   background:linear-gradient(120deg,rgba(122,80,28,.54),rgba(39,29,17,.75));}
+  @media(max-width:355px){.gamme-switch{gap:7px;margin-left:13px;margin-right:13px;}.gamme-tab{font-size:.55rem;}.subcategory-list{padding-left:13px;padding-right:13px;}}
+
+
+  /* ROOM SERVICE — bandeau signature / engagements */
+  .rs-signature-footer {
+    position: relative;
+    z-index: 6;
+    width: 100%;
+    margin-top: 22px;
+    margin-bottom: 12px;
+    padding: 26px max(14px, env(safe-area-inset-right)) 30px max(14px, env(safe-area-inset-left));
+    background: linear-gradient(180deg, #0b0a0a 0%, #070708 55%, #030304 100%);
+    border-top: 1px solid rgba(221, 176, 105, .44);
+    box-shadow: 0 -12px 38px rgba(0,0,0,.40);
+    text-align: center;
+  }
+  .rs-signature-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 1px;
+    width: min(380px, 70%);
+    background: linear-gradient(90deg, transparent, #dfb974, transparent);
+    box-shadow: 0 0 14px rgba(219, 174, 99, .35);
+    pointer-events: none;
+  }
+  .rs-footer-grid {
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0;
+  }
+  .rs-footer-feature {
+    min-height: 99px;
+    padding: 8px 9px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 11px;
+    border-right: 1px solid rgba(207, 166, 99, .30);
+  }
+  .rs-footer-feature:last-child { border-right: 0; }
+  .rs-footer-icon {
+    height: 34px;
+    width: 34px;
+    color: #d9b579;
+    display: block;
+    flex: 0 0 auto;
+    filter: drop-shadow(0 0 7px rgba(223, 181, 109, .10));
+  }
+  .rs-footer-feature-label {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: clamp(8px, .9vw, 10px);
+    line-height: 1.4;
+    font-weight: 700;
+    letter-spacing: .045em;
+    color: #f5ebda;
+    text-transform: uppercase;
+  }
+  .rs-footer-since {
+    margin: 24px auto 0;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    color: #dbb57b;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: .25em;
+    font-weight: 700;
+  }
+  .rs-footer-since::before, .rs-footer-since::after {
+    content: '';
+    width: min(14vw, 92px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(218, 179, 113, .55));
+  }
+  .rs-footer-since::after { transform: rotate(180deg); }
+  @media (max-width: 680px) {
+    .rs-signature-footer { padding-top: 20px; padding-bottom: 23px; }
+    .rs-footer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .rs-footer-feature { min-height: 109px; padding: 12px 6px; gap: 10px; }
+    .rs-footer-feature:nth-child(3n) { border-right: none; }
+    .rs-footer-feature:nth-child(-n+3) { border-bottom: 1px solid rgba(207, 166, 99, .22); }
+    .rs-footer-feature-label { font-size: clamp(8px, 2.2vw, 10px); letter-spacing: .01em; }
+    .rs-footer-icon { width: 31px; height: 31px; }
+    .rs-footer-since { margin-top: 23px; font-size: 10px; letter-spacing: .17em; }
+  }
 
  </style>
 </head>
@@ -706,7 +793,7 @@
     </div>
     <div class="hero-main">
      <img src="RoomServiceEmbleme.jpg" class="hero-emblem" alt="Monogramme RS couronné" />
-     <div class="hero-kicker">LUXE <span>✧</span> ÉLÉGANCE <span>✧</span> DISCRÉTION</div>
+     <div class="hero-kicker">LUXE <span>✧</span> ÉXCELLENCE <span>✧</span> DISCRÉTION</div>
      <h1 class="hero-name">ROOM SERVICE</h1>
      <div class="hero-signature">By Tonton Francky</div>
      <div class="hero-line"></div>
@@ -722,7 +809,7 @@
    <div>
     <div class="eyebrow">LA SIGNATURE</div>
     <h2>Plus qu'un service, <em>une expérience.</em></h2>
-    <p>Une identité inspirée des grandes nuits new-yorkaises, pensée autour du détail, de l'élégance et de la discrétion.</p>
+    <p>Une identité inspirée de la vibes new-yorkaises, pensée autour du détail.</p>
    </div>
   </div>
 
@@ -772,12 +859,26 @@
    <div class="app-title" id="cat-list-title">Catégorie</div>
    <button class="round-btn" onclick="navigate('contact')"><svg width="18" height="18"><use href="#ic-send"/></svg></button>
   </div>
+  <div class="gamme-header">
+   <span class="gamme-eyebrow">ROOM SERVICE COLLECTION</span>
+   <h2>Choisir une gamme</h2>
+   <p>Deux univers, une même signature.</p>
+  </div>
+  <div class="gamme-switch" id="gamme-switch" role="group" aria-label="Choisir la gamme">
+   <button type="button" data-gamme="classic" class="gamme-tab active" aria-pressed="true" onclick="switchGamme('classic')"><span class="gamme-tab-symbol">✧</span><span>GAMME CLASSIC</span><small>Les essentiels</small></button>
+   <button type="button" data-gamme="premium" class="gamme-tab" aria-pressed="false" onclick="switchGamme('premium')"><span class="gamme-tab-symbol">♛</span><span>GAMME PREMIUM</span><small>La sélection prestige</small></button>
+  </div>
+  <div class="gamme-title-strip">
+   <div><span class="gamme-eyebrow">LA COLLECTION</span><h3 id="gamme-selected-label">Gamme Classic</h3><p id="gamme-selected-desc">Les essentiels de la collection Room Service.</p></div>
+  </div>
+  <div id="subcategory-list" class="subcategory-list" aria-label="Sous-catégories"></div>
   <div class="filter-panel">
    <div class="filter-row">
     <input id="cat-search" type="text" placeholder="Rechercher dans cette catégorie...">
     <select id="cat-type-select"></select>
    </div>
   </div>
+  <div class="products-heading"><span>LES PIÈCES DE LA GAMME</span><span id="gamme-products-count">0 article</span></div>
   <div class="grid-2" id="cat-list-grid"></div>
  </div>
 
@@ -788,7 +889,7 @@
    <div id="product-video-controls-layer"></div>
    <div class="prod-head">
     <div>
-     <span class="type-chip" id="p-type">TYPE</span>
+     <div class="product-chip-row"><span class="type-chip" id="p-type">TYPE</span><span class="product-gamme-chip" id="p-gamme">Gamme Classic</span></div>
      <h2 class="prod-page-title" id="p-name">Nom</h2>
      <div class="prod-page-farm" id="p-farm">Collection</div>
     </div>
@@ -853,51 +954,6 @@
   </div>
  </div>
 
- <div id="page-reviews" class="page">
-  <div class="app-header"><button class="back-btn" onclick="navigate('home')">‹</button><div class="app-title">Avis clients</div><div style="width:42px"></div></div>
-
-  <div class="panel">
-   <div style="display:flex;align-items:center;justify-content:space-between;gap:14px">
-    <div>
-     <div id="rating-score" style="font-size:3rem;font-weight:1000;line-height:.9">—</div>
-     <div id="rating-stars" style="color:var(--green);font-weight:1000;margin-top:8px">☆☆☆☆☆</div>
-     <div id="review-count-label" class="tiny" style="margin-top:6px">Aucun avis validé</div>
-    </div>
-    <div style="flex:1">
-     <div class="line-stat"><span>Service</span><div class="bar"><span id="bar-service" style="width:0%"></span></div></div>
-     <div class="line-stat"><span>Qualité</span><div class="bar"><span id="bar-quality" style="width:0%"></span></div></div>
-     <div class="line-stat"><span>Réponse</span><div class="bar"><span id="bar-response" style="width:0%"></span></div></div>
-    </div>
-   </div>
-  </div>
-
-  <div class="panel">
-   <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-    <b>Retours validés</b>
-    <span class="tiny" id="reviews-refresh-label">Mis à jour automatiquement</span>
-   </div>
-   <div id="reviews-list">
-    <div class="empty-state" style="padding:28px 0">Chargement des avis...</div>
-   </div>
-  </div>
-
-  <div class="panel review-form">
-   <b>Laisser un avis</b>
-   <p class="tiny">Ton avis part dans le panel Telegram. Il apparaît ici uniquement après validation.</p>
-   <div class="rating-picker" id="review-stars" aria-label="Note">
-    <button type="button" data-rating="1">★</button>
-    <button type="button" data-rating="2">★</button>
-    <button type="button" data-rating="3">★</button>
-    <button type="button" data-rating="4">★</button>
-    <button type="button" data-rating="5">★</button>
-   </div>
-   <input class="address-input" id="review-author" type="text" placeholder="Ton pseudo (optionnel)" style="margin-bottom:10px">
-   <textarea class="address-input" id="review-message" rows="4" placeholder="Écris ton avis ici..."></textarea>
-   <button class="btn-main" id="send-review-btn" style="width:100%;margin-top:12px">Envoyer au panel Telegram</button>
-   <p class="tiny" id="review-send-status" style="margin:10px 0 0"></p>
-  </div>
- </div>
-  
  <div id="page-contact" class="page">
   <div class="app-header"><button class="back-btn" onclick="navigate('home')">‹</button><div class="app-title">Contact</div><div style="width:42px"></div></div>
   <div class="panel">
@@ -926,12 +982,55 @@
   </div>
  </div>
 
+
+ <!-- Bandeau Room Service : engagements et signature -->
+ <footer class="rs-signature-footer" aria-label="La signature Room Service">
+  <div class="rs-footer-grid">
+   <div class="rs-footer-feature">
+    <svg class="rs-footer-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true">
+     <path d="M9 14h30l5 8-20 21L4 22z"/><path d="M4 22h40M9 14l9 8 6-8 6 8 9-8M18 22l6 21 6-21"/>
+    </svg>
+    <span class="rs-footer-feature-label">SERVICE<br>DE QUALITÉ</span>
+   </div>
+   <div class="rs-footer-feature">
+    <svg class="rs-footer-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+     <path d="M24 42V8M24 34C13 29 10 23 10 13c8 4 12 9 14 16M24 34c11-5 14-11 14-21-8 4-12 9-14 16M24 28c-7-5-8-11-7-20 4 3 6 7 7 13M24 28c7-5 8-11 7-20-4 3-6 7-7 13M24 38c-6-2-11-6-15-13 6 1 12 3 15 9M24 38c6-2 11-6 15-13-6 1-12 3-15 9"/>
+    </svg>
+    <span class="rs-footer-feature-label">PRODUIT RAFFINÉ<br>D’EXCEPTION</span>
+   </div>
+   <div class="rs-footer-feature">
+    <svg class="rs-footer-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+     <circle cx="24" cy="24" r="19"/><text x="24" y="33" text-anchor="middle" font-family="Georgia,serif" font-size="28" fill="currentColor" stroke="none">€</text>
+    </svg>
+    <span class="rs-footer-feature-label">RAPPORT QUALITÉ<br>PRIX</span>
+   </div>
+   <div class="rs-footer-feature">
+    <svg class="rs-footer-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+     <path d="M6 37 4 14l12 10 8-17 8 17 12-10-2 23zM6 37h36v5H6z"/><circle cx="4" cy="12" r="2"/><circle cx="24" cy="5" r="2"/><circle cx="44" cy="12" r="2"/>
+    </svg>
+    <span class="rs-footer-feature-label">N°1<br>DANS LA RÉGION</span>
+   </div>
+   <div class="rs-footer-feature">
+    <svg class="rs-footer-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+     <path d="M7 35h34M10 29h29M10 25h29M36 25v4M37 19c3-3 0-6 2-9M29 19c-4-4 3-5-1-11M21 20c3-5-2-6 1-11"/>
+    </svg>
+    <span class="rs-footer-feature-label">SMOKING<br>SAFE PLACE</span>
+   </div>
+   <div class="rs-footer-feature">
+    <svg class="rs-footer-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+     <circle cx="24" cy="24" r="19"/><text x="24" y="29" text-anchor="middle" fill="currentColor" stroke="none" font-family="Montserrat,Arial,sans-serif" font-size="17" font-weight="700">18+</text>
+    </svg>
+    <span class="rs-footer-feature-label">ADULT<br>ONLY</span>
+   </div>
+  </div>
+  <div class="rs-footer-since">SINCE 2019 ©️</div>
+ </footer>
+
  <div class="nav-floating">
   <div class="nav-item-float nav-btn" data-target="page-favorites"><svg width="20" height="20"><use href="#ic-heart"/></svg><span class="nav-text">Favoris</span></div>
   <div class="nav-item-float nav-btn" data-target="page-cart" style="position:relative"><svg width="21" height="21"><use href="#ic-cart"/></svg><span class="nav-text">Sélection</span><div class="nav-badge-float" id="nav-badge">0</div></div>
   <div class="nav-item-float nav-btn active" data-target="page-home"><svg width="21" height="21"><use href="#ic-home"/></svg><span class="nav-text">Shop</span></div>
-<!--   <div class="nav-item-float nav-btn" data-target="page-reviews"><svg width="21" height="21"><use href="#ic-star"/></svg><span class="nav-text">Avis</span></div>
- -->  <div class="nav-item-float nav-btn" data-target="page-profile"><svg width="21" height="21"><use href="#ic-user"/></svg><span class="nav-text">Profil</span></div>
+  <div class="nav-item-float nav-btn" data-target="page-profile"><svg width="21" height="21"><use href="#ic-user"/></svg><span class="nav-text">Profil</span></div>
  </div>
 
  <script src="script.js"></script>
