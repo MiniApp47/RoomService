@@ -3,9 +3,9 @@
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
- <title>Room Service — By Tonton Francky</title>
+ <title>Room Service 51 — By Tonton Francky</title>
   <meta name="theme-color" content="#080809">
- <meta name="description" content="Room Service by Tonton Francky — Luxe, élégance et discrétion.">
+ <meta name="description" content="Room Service 51 by Tonton Francky — Luxe, excellence et discrétion.">
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -500,7 +500,7 @@
   }
 
   /* =============================================================
-     ROOM SERVICE — Direction artistique : Noir marbre & Or champagne
+     ROOM SERVICE 51 — Direction artistique : Noir marbre & Or champagne
      ============================================================= */
   :root { color-scheme: dark; }
    body {
@@ -616,7 +616,7 @@
   @media(prefers-reduced-motion:reduce){body::before{animation:none;}.page,.loader-logo{animation:none;}html{scroll-behavior:auto;}}
 
 
-  /* ROOM SERVICE — Gammes Classic / Premium, sous-catégories */
+  /* ROOM SERVICE 51 — Gammes Classic / Premium, sous-catégories */
   .gamme-header{text-align:center;padding:26px 18px 14px;}
   .gamme-header h2{font:600 2.05rem 'Cormorant Garamond',serif;color:#f5dfb6;margin:7px 0 3px;}
   .gamme-header p,.gamme-title-strip p{font-size:.71rem;color:#b8a88e;line-height:1.6;margin:4px 0 0;}
@@ -656,7 +656,7 @@
   @media(max-width:355px){.gamme-switch{gap:7px;margin-left:13px;margin-right:13px;}.gamme-tab{font-size:.55rem;}.subcategory-list{padding-left:13px;padding-right:13px;}}
 
 
-  /* ROOM SERVICE — bandeau signature / engagements */
+  /* ROOM SERVICE 51 — bandeau signature / engagements */
   .rs-signature-footer {
     position: relative;
     z-index: 6;
@@ -747,13 +747,30 @@
     .rs-footer-since { margin-top: 23px; font-size: 10px; letter-spacing: .17em; }
   }
 
- </style>
+ 
+  /* Room Service 51 : accueil par catégories seulement */
+  .desc-box { white-space: pre-line; }
+  .hero-number-51 {
+   display:inline-block; font:700 1.05rem 'Montserrat',sans-serif; letter-spacing:.38em;
+   color:#edc581; text-shadow:0 0 18px rgba(185,138,66,.4); margin-top:1px;
+  }
+  .rs-cat-only { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible;padding:14px 18px 22px;gap:13px; }
+  @media(min-width:700px) { .rs-cat-only { grid-template-columns:repeat(4,minmax(0,1fr)); } }
+  .rs-cat-only .cat-card {
+   flex:none; width:100%; min-width:0; min-height:188px;
+   background:linear-gradient(145deg,rgba(47,36,24,.9),rgba(12,11,12,.98));
+   border:1px solid rgba(231,199,141,.42);
+  }
+  .rs-cat-only .cat-card img { width:94px; height:94px; }
+  .rs-cat-only .cat-card .title { font:600 1.5rem 'Cormorant Garamond',serif; color:#f7e0bc; }
+  .rs-category-help { margin:3px 22px 29px; color:#d0b78c; font-size:.78rem; line-height:1.65; text-align:center; }
+</style>
 </head>
 <body>
  <div id="page-loader" class="active">
   <div class="loader-card">
-   <img src="RoomServiceEmbleme.jpg" class="loader-logo" alt="Room Service">
-   <div class="loader-title">ROOM SERVICE</div>
+   <img src="RoomServiceEmbleme.jpg" class="loader-logo" alt="Room Service 51">
+   <div class="loader-title">ROOM SERVICE 51</div>
    <p class="loader-sub">L'expérience signée Tonton Francky...</p>
    <div class="progress-line"><span id="myBar"></span></div>
   </div>
@@ -785,22 +802,22 @@
  </div>
 
  <div id="page-home" class="page active">
-  <section class="hero-v3" aria-label="Bienvenue chez Room Service">
+  <section class="hero-v3" aria-label="Bienvenue chez Room Service 51">
    <div class="hero-content">
     <div class="hero-top">
-     <div class="brand-pill"><span class="crown-mark">♛</span> ROOM SERVICE <span class="brand-top-suffix">EST. NEW YORK SPIRIT</span></div>
+     <div class="brand-pill"><span class="crown-mark">♛</span> ROOM SERVICE 51 <span class="brand-top-suffix">EST. NEW YORK SPIRIT</span></div>
      <div class="hero-social-top" id="hero-social-links" aria-label="Réseaux officiels"></div>
     </div>
     <div class="hero-main">
      <img src="RoomServiceEmbleme.jpg" class="hero-emblem" alt="Monogramme RS couronné" />
-     <div class="hero-kicker">LUXE <span>✧</span> ÉXCELLENCE <span>✧</span> DISCRÉTION</div>
-     <h1 class="hero-name">ROOM SERVICE</h1>
+     <div class="hero-kicker">LUXE <span>✧</span> EXCELLENCE <span>✧</span> DISCRÉTION</div>
+     <h1 class="hero-name">ROOM SERVICE 51</h1>
      <div class="hero-signature">By Tonton Francky</div>
      <div class="hero-line"></div>
      <p class="hero-desc">Le luxe au bout des doigts.</p>
      <button class="hero-cta" type="button" onclick="document.getElementById('selection-anchor').scrollIntoView({behavior:'smooth'})">DÉCOUVRIR L'UNIVERS <span>↗</span></button>
     </div>
-    <div class="hero-bottom">THE PRIVATE EXPERIENCE <span>✦</span> ROOM SERVICE</div>
+    <div class="hero-bottom">THE PRIVATE EXPERIENCE <span>✦</span> ROOM SERVICE 51</div>
    </div>
   </section>
 
@@ -815,33 +832,21 @@
 
 
   <section class="collection-intro">
-   <div class="eyebrow">ROOM SERVICE COLLECTION</div>
+   <div class="eyebrow">ROOM SERVICE 51 COLLECTION</div>
    <h2>La <em>sélection</em></h2>
    <p>Découvrez les collections et les nouveautés de la maison.</p>
   </section>
   <div id="catalogue-section">
-  <div class="search-shell">
-   <div class="search-box">
-    <svg width="20" height="20"><use href="#ic-search"/></svg>
-    <input id="home-search" type="text" placeholder="Rechercher dans la collection...">
-   </div>
-  </div>
-
-  <div class="section-title"><span>Catégories</span><span class="section-action">Explorer</span></div>
-  <div class="h-scroll" id="cat-scroll"></div>
-
-  <div class="section-title"><span>Dernières pièces</span><span class="section-action" id="new-count"></span></div>
-  <div class="h-scroll" id="recent-scroll"></div>
-
-  <div class="section-title"><span>Sélection privée</span><span class="section-action">Infos complètes</span></div>
-  <div class="grid-2" id="trend-grid"></div>
+   <div class="section-title"><span>Nos collections</span><span class="section-action">4 univers</span></div>
+   <div class="h-scroll rs-cat-only" id="cat-scroll"></div>
+   <p class="rs-category-help">Choisis une catégorie pour découvrir ses gammes Classic et Premium, puis ses produits et vidéos.</p>
   </div>
   <div class="collection-empty" id="catalogue-empty" hidden>
    <div class="collection-empty-bg"></div>
    <div class="collection-empty-inner">
     <div class="collection-empty-crown">♛</div>
     <h3>Une nouvelle expérience arrive.</h3>
-    <p>La collection officielle Room Service sera bientôt présentée ici.</p>
+    <p>La collection officielle Room Service 51 sera bientôt présentée ici.</p>
     <button type="button" class="outline-gold" onclick="navigate('contact')">NOUS CONTACTER <span>↗</span></button>
    </div>
   </div>
@@ -860,7 +865,7 @@
    <button class="round-btn" onclick="navigate('contact')"><svg width="18" height="18"><use href="#ic-send"/></svg></button>
   </div>
   <div class="gamme-header">
-   <span class="gamme-eyebrow">ROOM SERVICE COLLECTION</span>
+   <span class="gamme-eyebrow">ROOM SERVICE 51 COLLECTION</span>
    <h2>Choisir une gamme</h2>
    <p>Deux univers, une même signature.</p>
   </div>
@@ -869,7 +874,7 @@
    <button type="button" data-gamme="premium" class="gamme-tab" aria-pressed="false" onclick="switchGamme('premium')"><span class="gamme-tab-symbol">♛</span><span>GAMME PREMIUM</span><small>La sélection prestige</small></button>
   </div>
   <div class="gamme-title-strip">
-   <div><span class="gamme-eyebrow">LA COLLECTION</span><h3 id="gamme-selected-label">Gamme Classic</h3><p id="gamme-selected-desc">Les essentiels de la collection Room Service.</p></div>
+   <div><span class="gamme-eyebrow">LA COLLECTION</span><h3 id="gamme-selected-label">Gamme Classic</h3><p id="gamme-selected-desc">Les essentiels de la collection Room Service 51.</p></div>
   </div>
   <div id="subcategory-list" class="subcategory-list" aria-label="Sous-catégories"></div>
   <div class="filter-panel">
@@ -957,8 +962,8 @@
  <div id="page-contact" class="page">
   <div class="app-header"><button class="back-btn" onclick="navigate('home')">‹</button><div class="app-title">Contact</div><div style="width:42px"></div></div>
   <div class="panel">
-   <b>ROOM SERVICE · CONTACT</b>
-   <p class="tiny">Retrouve ici uniquement les contacts officiels de Room Service.</p>
+   <b>ROOM SERVICE 51 · CONTACT</b>
+   <p class="tiny">Retrouve ici uniquement les contacts officiels de Room Service 51.</p>
    <div id="official-contact-links" class="official-contact-links"></div>
    <p class="contact-awaiting" id="contact-awaiting">Les coordonnées officielles seront ajoutées prochainement.</p>
   </div>
@@ -968,8 +973,8 @@
   <div class="app-header"><button class="back-btn" onclick="navigate('home')">‹</button><div class="app-title">Mon espace</div><button class="round-btn" onclick="navigate('contact')"><svg width="18" height="18"><use href="#ic-send"/></svg></button></div>
   <div class="panel profile-card">
    <img src="RoomServiceEmbleme.jpg" class="profile-avatar" id="prof-img" alt="Profil">
-   <div class="profile-name">ROOM SERVICE</div>
-   <div class="profile-rank">✦ L'univers Room Service</div>
+   <div class="profile-name">ROOM SERVICE 51</div>
+   <div class="profile-rank">✦ L'univers Room Service 51</div>
    <div class="profile-stats">
     <div class="stat-card"><b id="prof-pseudo">-</b><span>Pseudo</span></div>
     <div class="stat-card"><b id="prof-id">-</b><span>ID</span></div>
@@ -978,13 +983,13 @@
   </div>
   <div class="panel">
    <b>Infos</b>
-   <p style="color:var(--text-muted);line-height:1.7">L’univers Room Service, sa collection et ses nouveautés, au même endroit.</p>
+   <p style="color:var(--text-muted);line-height:1.7">L’univers Room Service 51, sa collection et ses nouveautés, au même endroit.</p>
   </div>
  </div>
 
 
- <!-- Bandeau Room Service : engagements et signature -->
- <footer class="rs-signature-footer" aria-label="La signature Room Service">
+ <!-- Bandeau Room Service 51 : engagements et signature -->
+ <footer class="rs-signature-footer" aria-label="La signature Room Service 51">
   <div class="rs-footer-grid">
    <div class="rs-footer-feature">
     <svg class="rs-footer-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true">

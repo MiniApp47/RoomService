@@ -24,61 +24,121 @@ document.addEventListener("DOMContentLoaded", function () {
     snapchat: ""    // Snapchat officiel
   };
 
-   // ===========================================================
-   // COLLECTIONS ROOM SERVICE
-   // Les catégories restent visibles même lorsque leurs produits sont vides.
-   // gammes : "classic" ou "premium".
-   // Pour HASH : gamme imposée par la sous-catégorie.
-   // Pour WEED : préciser gamme sur chaque produit, car les deux
-   //             sous-catégories peuvent exister dans les deux gammes.
-   // ===========================================================
-   const appData = [
+    // ===========================================================
+    // ROOM SERVICE 51 — CATÉGORIES ET PRODUITS
+    // Ajoute tes médias dans le même dossier que index.html.
+    // Les noms de fichiers Product*.jpg servent de repères pour tes futurs visuels.
+    // Des images manquantes seront remplacées automatiquement par le logo.
+    // Les packs restent des produits à part entière avec un prix par pack.
+    // ===========================================================
+    const appData = [
     {
-     id: 'HASH',
-     name: 'Hash',
-     type: 'Hash',
-     image: 'CategHash.png',
-     directToProducts: false,
-     farms: [
-      { id: 'MOUSSEUX', name: 'Mousseux', gamme: 'classic', symbol: '🧽', products: [] },
-      { id: 'FILTRE', name: 'Filtré', gamme: 'classic', symbol: '🔎', products: [] },
-      { id: 'FROZEN', name: 'Frozen', gamme: 'premium', symbol: '🧊', products: [
-        {
-                            id: '🫒🧊 RS11',
-                            flag: '🇺🇸',
-                            name: '🫒🧊 RS11',
-                            farm: '🚜 THERPS INDUSTRY 👑',
-                            promoEligible: false,
-                            type: 'Frozen Sift 🧊🫒',
-                            image: 'ProductRS.png',
-                            video: 'VideoRS.mp4',
-                            description: `🫒🧊 RS11 - Frozen Sift 🧊🫒
+        "id": "HASH",
+        "name": "Hash",
+        "type": "Hash",
+        "image": "CategHash.png",
+        "directToProducts": false,
+        "farms": [
+            {
+                "id": "MOUSSEUX",
+                "name": "Mousseux",
+                "gamme": "classic",
+                "symbol": "🧽",
+                "products": [
+                    {
+                        "id": "no-name-mousseux",
+                        "name": "🧽 SUPER MOUSSEUX 🧽",
+                        "farm": "🏡 NO FARM",
+                        "type": "Hash Mousseux",
+                        "image": "ProductNN.jpg",
+                        "video": "VideoNN.mp4",
+                        "description": `🧽 NO NAME - SUPER MOUSSEUX + 🧽
+☀️ Hash Critical - Format 100g ☀️
+🚜🇲🇦 Provenance Ketama,  NO FARM 🚜
+☄️ Profil crémeux, jaune, non collant ☄️
+🍭 Doux et bonne defonce 🍭
+
+✨ Classique gamme, produit incontournable ✨
+©️🥇L’incontournable de chez  Room Service 51 🥇©️`,
+                        "tarifs": [
+                            { weight: "5g", price: 30 },
+                            { weight: "10g", price: 50 },
+                            { weight: "20g", price: 90 },
+                            { weight: "25g", price: 110 },
+                            { weight: "50g", price: 180 },
+                            { weight: "100g", price: 320 },
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "FILTRE",
+                "name": "Filtré 120U",
+                "gamme": "classic",
+                "symbol": "🔎",
+                "products": [
+                    {
+                        "id": "hash-filtre-120u",
+                        "name": "🍫🔥 HASH FILTRÉ 120U",
+                        "farm": "🏡 NO FARM",
+                        "type": "Hash Filtré",
+                        "image": "",
+                        "video": "",
+                        "description": `🍫🔥 …. - Hash Filtré
+🤯 120U - Format 100g 🤯
+🚜🇲🇦 Provenance Ketama, NO FARM 🚜
+🧈 Profil plus gras, texture souple, riche en arôme 
+🍯 Riche en Terpènes, saveur planteuse et forte 
+
+✨ Produit Classic +, bon rapport qualité/prix ✨
+©️🥇 Valeur sûre de chez  Room Service 51 🥇©️`,
+                        "tarifs": [
+                            { weight: "5g", price: 40 },
+                            { weight: "10g", price: 70 },
+                            { weight: "25g", price: 160 },
+                            { weight: "50g", price: 250 },
+                            { weight: "100g", price: 420 },
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "FROZEN",
+                "name": "Frozen ",
+                "gamme": "premium",
+                "symbol": "🧊",
+                "products": [
+                    {
+                        "id": "rs11",
+                        "name": "🫒🧊 RS11",
+                        "farm": "🚜 THERPS INDUSTRY 👑",
+                        "type": "Frozen Sift",
+                        "image": "ProductRS.jpg",
+                        "video": "VideoRS.mp4",
+                        "description": `🫒🧊 RS11 - Frozen Sift 🧊🫒
 💎 Ultra Frozen - Format 10G 💎
 🚜 THERPS INDUSTRY 👑
 ☄️ Profil onctueusement crémeuse
 🍬 Notes sucrées et fruitées 🥭
 
 ☘️Terpènes Préservés ☘️ • sèches et onctueuse 🍨
-✨ Sélection Premium, soigneusement sélectionnée » 
-
-©️🥇 Exclusivité Room Service 🥇©️`,
-                            tarifs: [
-                                { weight: 'Demi Olive', price: 70.00 },
-                                { weight: '1 Olive', price: 130.00 },
-                                { weight: '2 Olives', price: 230.00 },
-                                { weight: '5 Olives', price: 480.00 },
-                            ]
-                        },
-        {
-                            id: '🫒🧊 PANACOTA',
-                            flag: '🇺🇸',
-                            name: '🫒🧊 PANACOTA',
-                            farm: '🚜 THERPS INDUSTRY 👑',
-                            promoEligible: false,
-                            type: 'Frozen Sift 🧊🫒',
-                            image: 'ProductPA.jpg',
-                            video: 'VideoPA.mp4',
-                            description: `🫒🧊 PANACOTA - Frozen Sift 🧊🫒
+✨ Sélection Premium, soigneusement sélectionnée »
+©️ Exclusivité Room Service 51`,
+                        "tarifs": [
+                            { weight: "Demi olive", price: 70 },
+                            { weight: "1 olive", price: 130 },
+                            { weight: "2 olives", price: 230 },
+                            { weight: "5 olives", price: 480 },
+                        ]
+                    },
+                    {
+                        "id": "panacota",
+                        "name": "🫒🧊 PANACOTA",
+                        "farm": "🚜 THERPS INDUSTRY 👑",
+                        "type": "Frozen Sift",
+                        "image": "ProductPA.jpg",
+                        "video": "VideoPA.mp4",
+                        "description": `🫒🧊 PANACOTA - Frozen Sift 🧊🫒
 💎 Ultra Frozen - Format 10G 💎
 🚜 THERPS INDUSTRY 👑
 ☄️ Profil exotique et puissance marqué 
@@ -86,47 +146,276 @@ document.addEventListener("DOMContentLoaded", function () {
 
 ☘️ Terpènes préservés 🌿 • sèches et petantes 🧨
 ✨ « Sélection Premium , Limited Édition » ✨
+✨ Sélection Premium · Limited Edition 
+©️ Room Service 51`,
+                        "tarifs": [
+                            { weight: "Demi olive", price: 70 },
+                            { weight: "1 olive", price: 130 },
+                            { weight: "2 olives", price: 230 },
+                            { weight: "5 olives", price: 480 },
+                        ]
+                    },
+                    {
+                        "id": "peanut-butter-fly",
+                        "name": "🥜🧊 PEANUT BUTTER FLY",
+                        "farm": "🚜 Gang Farm 🚜",
+                        "type": "Fresh Frozen",
+                        "image": "ProductBP.jpg",
+                        "video": "VideoBP.mp4",
+                        "description": `🥜🧊 PEANUT BUTTER FLY - Fresh Frozen 🧊🥜
+💎 Premium Quality - Format 100g 💎
+🚜 Gang Farm 🚜
+🥨 Notes très  gourmandes 🥨
+🤯 Profil pétant, effritage facile 🤯
 
-©️🥇 Exclusivité Room Service 🥇©️`,
-                            tarifs: [
-                                { weight: 'Demi Olive', price: 70.00 },
-                                { weight: '1 Olive', price: 130.00 },
-                                { weight: '2 Olives', price: 230.00 },
-                                { weight: '5 Olives', price: 480.00 },
-                            ]
-                        },
-      ] },
-      { id: 'OLIVE_FROZEN', name: 'Olive Frozen', gamme: 'premium', symbol: '🫒', products: [] },
-      { id: 'STATIC_DOUBLE_STATIC', name: 'Static / Double Static', gamme: 'premium', symbol: '🔮', products: [] }
-     ]
+✨ Sélection premium, Limited Édition ✨
+©️🥇 Exclusivité Room Service 51 🥇©️`,
+                        "tarifs": [
+                            { weight: "5g", price: 50 },
+                            { weight: "10g", price: 100 },
+                            { weight: "25g", price: 220 },
+                            { weight: "50g", price: 400 },
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "STATIC_DOUBLE_STATIC",
+                "name": "Static / Double Static",
+                "gamme": "premium",
+                "symbol": "🔮",
+                "products": [
+                    {
+                        "id": "blue-magic",
+                        "name": "🫐🥶 BLUE MAGIC",
+                        "farm": "🚜 THERPS INDUSTRY 🚜",
+                        "type": "Double Static",
+                        "image": "ProductBM.jpg",
+                        "video": "VideoBM.mp4",
+                        "description": `🫐🥶 BLUE MAGIC - GAS + FRUIT 🫐🥶
+💎 Double Static - Format 100g 💎
+🚜 THERPS INDUSTRY 🚜
+☄️ Profil gazeux et aromatique ☄️
+🍬 Notes toujours autant fruitées 🍬
+
+🌡️Terpènes Max 🌡️
+✨ Sélection Premium, Hash Maker de Qualité ✨
+©️🥇 Exclusivité Room Service 51 🥇©️`,
+                        "tarifs": [
+                            { weight: "10g", price: 140 },
+                            { weight: "25g", price: 280 },
+                            { weight: "50g", price: 450 },
+                            { weight: "100g", price: 750 },
+                        ]
+                    }
+                ]
+            }
+        ]
     },
     {
-     id: 'WEED',
-     name: 'Weed',
-     type: 'Weed',
-     image: 'CategWeed.png',
-     directToProducts: false,
-     farms: [
-      // Pas de gamme imposée pour la Weed : Classic ou Premium
-      // se choisit au niveau de chaque fiche produit.
-      { id: 'HOLLANDAISE_COFFEE', name: 'Hollandaise Coffee', gamme: 'classic', symbol: '🇳🇱', products: [] },
-      { id: 'CALI_USA', name: 'Cali USA', gamme: 'premium', symbol: '🇺🇸', products: [] }
-     ]
+        "id": "WEED",
+        "name": "Weed",
+        "type": "Weed",
+        "image": "CategWeed.png",
+        "directToProducts": false,
+        "farms": [
+            {
+                "id": "HOLLANDAISE_COFFEE",
+                "name": "Hollandaise Coffee",
+                "gamme": "classic",
+                "symbol": "🇳🇱",
+                "products": [
+                    {
+                        "id": "skywalker-haze",
+                        "name": "🌛🥦 SKYWALKER HAZE",
+                        "farm": "🇳🇱☕️ Hollandaise Coffee ☕️🇳🇱",
+                        "type": "🇳🇱☕️ Hollandaise Coffee ☕️🇳🇱",
+                        "image": "ProductSW.jpg",
+                        "video": "VideoSW.mp4",
+                        "description": `🌛🥦 SKYWALKER HAZE 
+🇳🇱☕️ Hollandaise Coffee - 100% Sativa ☕️🇳🇱
+🍋🍋‍🟩 Notes de citrons et de fleurs 🍋‍🟩🍋
+🍭⚡️ Effets énergisants et stimulants⚡️🍭
+
+☘️ Têtes compactes et croquantes 🍀
+✨ Sélection Classique, DUTCH QUALITÉ ✨
+©️🥇 Exclusivité Room Service 51 🥇©️`,
+                        "tarifs": [
+                            { weight: "5g", price: 50 },
+                            { weight: "10g", price: 80 },
+                            { weight: "25g", price: 170 },
+                            { weight: "50g", price: 300 },
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "CALI_USA",
+                "name": "Cali USA",
+                "gamme": "premium",
+                "symbol": "🇺🇸",
+                "products": [
+                    {
+                        "id": "tropicana-cherry-4",
+                        "name": "🌴 TROPICANA CHERRY 4.0",
+                        "farm": "🚜 SIMPSONS FARMS 🚜",
+                        "type": "Cali USA",
+                        "image": "ProductTC.jpg",
+                        "video": "VideoTC.mp4",
+                        "description": `🌴 TROPICANA CHERRY 4.0 🌴
+🇺🇸💎 Cali US - 60% Sativa / 40% Indica 🇺🇸💎
+🚜 SIMPSONS FARMS 🚜
+🍒🍹Notes fruitées et  arômes cerises 🍹🍒
+🍭 ⚡️Effets actifs, euphorisants et joyeux  ⚡️🍭
+
+🍀 Têtes compactes et givrées 🍀
+✨ Sélection Premium, Cali Quality ✨
+©️🥇 Exclusivité Room Service 51 🥇©️`,
+                        "tarifs": [
+                            { weight: "5g", price: 60 },
+                            { weight: "10g", price: 110 },
+                            { weight: "25g", price: 250 },
+                            { weight: "50g", price: 400 },
+                        ]
+                    }
+                ]
+            }
+        ]
     },
     {
-     id: 'NEIGE',
-     name: 'Neige',
-     type: 'Neige',
-     image: 'CategNeige.png',
-     directToProducts: false,
-     farms: [
-      // Pas de gamme imposée pour la Weed : Classic ou Premium
-      // se choisit au niveau de chaque fiche produit.
-      { id: 'SURINAMAISE', name: 'Surinamaise', gamme: 'classic', symbol: '🇸🇷', products: [] },
-      { id: 'BOLIVIENNE', name: 'Bolivienne', gamme: 'premium', symbol: '🇧🇴', products: [] },
-     ]
+        "id": "NEIGE",
+        "name": "Neige",
+        "type": "Neige",
+        "image": "CategNeige.png",
+        "directToProducts": false,
+        "farms": [
+                { id: 'SURINAMAISE', name: 'Surinamaise', gamme: 'classic', symbol: '🇸🇷', products: [] },
+                { id: 'BOLIVIENNE', name: 'Bolivienne', gamme: 'premium', symbol: '🇧🇴', products: [
+                  {
+                        "id": "LAS DE PIQUE",
+                        "name": "☃️ L’AS DE PIQUE",
+                        "farm": "RÉELLE BOLIVIENNE  🇧🇴",
+                        "type": "Cali USA",
+                        "image": "ProductAS.jpg",
+                        "video": "VideoAS.mp4",
+                        "description": `💎 Écaille de poisson - Format Pavé 
+⛷️ Goût parfait, craquante et brillante 
+👃🚬 Profil double fonction, conviens à tous consommateurs 
+🥳🎉 Super stimulants pour vos soirées 🪩
+
+
+✨ Gamme Premium, haute qualité certifiée ✨
+©️🥇Rarement vu ailleurs, que chez Room Service 51 🥇©️`,
+                        "tarifs": [
+                            { weight: "1g", price: 60 },
+                            { weight: "2g", price: 110 },
+                            { weight: "3g", price: 160 },
+                            { weight: "5g", price: 250 },
+                            { weight: "10g", price: 380 },
+                        ]
+                    }
+                ] },
+
+        ]
+    },
+    {
+        "id": "PACK",
+        "name": "Pack",
+        "type": "Pack",
+        "image": "CategPack.png",
+        "directToProducts": false,
+        "farms": [
+            {
+                "id": "PACK_CLASSIC",
+                "name": "Packs Classic",
+                "gamme": "classic",
+                "symbol": "🎁",
+                "products": [
+                    {
+                        "id": "soft-royal",
+                        "name": "♛ SOFT ROYAL",
+                        "farm": "Gamme Classic",
+                        "type": "Pack",
+                        "image": "ProductSoftRoyal.jpg",
+                        "video": "",
+                        "description": "Composition : 5 g Hollandaise + 5 g Jaune\n\nPack Classic · Room Service 51",
+                        "tarifs": [
+                            { weight: "1 pack", price: 60 },
+                        ]
+                    },
+                    {
+                        "id": "mega-royal",
+                        "name": "♛ MEGA ROYAL",
+                        "farm": "Gamme Classic",
+                        "type": "Pack",
+                        "image": "ProductMegaRoyal.jpg",
+                        "video": "",
+                        "description": "Composition : 5 g Hollandaise + 5 g Filtré 120U\n\nPack Classic · Room Service 51",
+                        "tarifs": [
+                            { weight: "1 pack", price: 70 },
+                        ]
+                    },
+                    {
+                        "id": "maxi-royal",
+                        "name": "♛ MAXI ROYAL",
+                        "farm": "Gamme Classic",
+                        "type": "Pack",
+                        "image": "ProductMaxiRoyal.jpg",
+                        "video": "",
+                        "description": "Composition : 10 g Hollandaise + 10 g Filtré 120U\n\nPack Classic · Room Service 51",
+                        "tarifs": [
+                            { weight: "1 pack", price: 130 },
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "PACK_PREMIUM",
+                "name": "Packs Premium",
+                "gamme": "premium",
+                "symbol": "👑",
+                "products": [
+                    {
+                        "id": "pack-peufra",
+                        "name": "♛ PACK PEUFRA",
+                        "farm": "Gamme Premium",
+                        "type": "Pack",
+                        "image": "ProductPackPeufra.jpg",
+                        "video": "",
+                        "description": "Composition : 5 g Cali US + 5 g Frozen\n\nPack Premium · Room Service 51",
+                        "tarifs": [
+                            { weight: "1 pack", price: 90 },
+                        ]
+                    },
+                    {
+                        "id": "pack-mega-peufra",
+                        "name": "♛ PACK MEGA PEUFRA",
+                        "farm": "Gamme Premium",
+                        "type": "Pack",
+                        "image": "ProductPackMegaPeufra.jpg",
+                        "video": "",
+                        "description": "Composition : 5 g Cali US + demi olive\n\nPack Premium · Room Service 51",
+                        "tarifs": [
+                            { weight: "1 pack", price: 100 },
+                        ]
+                    },
+                    {
+                        "id": "pack-maxi-peufra",
+                        "name": "♛ PACK MAXI PEUFRA",
+                        "farm": "Gamme Premium",
+                        "type": "Pack",
+                        "image": "ProductPackMaxiPeufra.jpg",
+                        "video": "",
+                        "description": "Composition : 10 g Cali US + 1 olive\n\nPack Premium · Room Service 51",
+                        "tarifs": [
+                            { weight: "1 pack", price: 200 },
+                        ]
+                    }
+                ]
+            }
+        ]
     }
-   ];
+];
 
  // Contacts : affichés uniquement si les liens officiels sont renseignés ci-dessus.
  const officialContacts = [
@@ -220,7 +509,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const cats = appData.filter(c => c.farms.some(f => f.products.length)).length;
   if (document.getElementById("stat-products")) document.getElementById("stat-products").innerText = allProducts.length;
   if (document.getElementById("stat-cats")) document.getElementById("stat-cats").innerText = cats;
-  document.getElementById("new-count").innerText = `${Math.min(6, allProducts.length)} articles`;
+  if (document.getElementById("new-count")) document.getElementById("new-count").innerText = `${Math.min(6, allProducts.length)} articles`;
  }
 
  window.navigate = function(pageId) {
@@ -246,7 +535,7 @@ document.addEventListener("DOMContentLoaded", function () {
   return `
    <div class="cat-card" onclick="openCategory('${category.id}')">
     <span class="open-badge">›</span>
-    <img src="${category.image || 'RoomServiceLogo.jpg'}" alt="${category.name}">
+    <img src="${category.image || 'RoomServiceLogo.jpg'}" alt="${category.name}" onerror="this.onerror=null;this.src='RoomServiceLogo.jpg'">
     <div class="title">${category.name}</div>
     <div class="meta">2 gammes · ${category.farms.length} sous-catégories</div>
    </div>`;
@@ -273,7 +562,7 @@ document.addEventListener("DOMContentLoaded", function () {
   return `
    <div class="prod-card ${isLarge ? 'large' : ''}" onclick="openProduct(decodeURIComponent('${safeId}'))">
     <div class="prod-img-wrap">
-     <img src="${productImage(product)}" alt="${product.name}">
+     <img src="${productImage(product)}" alt="${product.name}" onerror="this.onerror=null;this.src='RoomServiceLogo.jpg'">
      <div class="media-chip">${hasVideo(product) ? '▶ ' + count + ' média' : 'IMAGE'}</div>
      <button class="fav-chip ${isFav ? 'active' : ''}" aria-label="Favori" onclick="event.stopPropagation(); toggleFavorite(decodeURIComponent('${safeId}'))">${favoriteIconHTML(isFav)}</button>
     </div>
@@ -289,17 +578,14 @@ document.addEventListener("DOMContentLoaded", function () {
    </div>`;
  }
 
- function renderHome(products = allProducts) {
+ // Sur l'accueil : catégories uniquement (aucun produit / aucune vidéo).
+ function renderHome() {
   const catContainer = document.getElementById("cat-scroll");
-  catContainer.innerHTML = appData.map(createCategoryCard).join("");
+  if (catContainer) catContainer.innerHTML = appData.map(createCategoryCard).join("");
   const catalogEmpty = document.getElementById("catalogue-empty");
   const catalogSection = document.getElementById("catalogue-section");
   if (catalogEmpty) catalogEmpty.hidden = appData.length > 0;
   if (catalogSection) catalogSection.hidden = appData.length === 0;
-
-  const filtered = products;
-  document.getElementById("recent-scroll").innerHTML = filtered.slice(0, 6).map(p => createCardHTML(p, true)).join("");
-  document.getElementById("trend-grid").innerHTML = filtered.slice(0, 12).map(p => createCardHTML(p, false)).join("") || emptyState("Aucun article trouvé");
   setStats();
  }
 
@@ -307,11 +593,6 @@ document.addEventListener("DOMContentLoaded", function () {
   return `<div class="empty-state" style="grid-column:1/-1">${text}</div>`;
  }
 
- document.getElementById("home-search")?.addEventListener("input", (e) => {
-  const q = e.target.value;
-  const results = allProducts.filter(p => productMatches(p, q));
-  renderHome(results);
- });
 
  // La gamme est le premier niveau, puis on choisit une sous-catégorie.
  function farmsForCurrentGamme() {
@@ -333,7 +614,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const title = document.getElementById('gamme-selected-label');
   if (title) title.textContent = currentGamme === 'premium' ? 'Gamme Premium' : 'Gamme Classic';
   const copy = document.getElementById('gamme-selected-desc');
-  if (copy) copy.textContent = currentGamme === 'premium' ? 'La sélection prestige de Room Service.' : 'Les essentiels de la collection Room Service.';
+  if (copy) copy.textContent = currentGamme === 'premium' ? 'La sélection prestige de Room Service 51.' : 'Les essentiels de Room Service 51.';
 
   const select = document.getElementById('cat-type-select');
   const farms = farmsForCurrentGamme();
@@ -373,7 +654,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.getElementById('cat-list-title').innerText = currentCategory.name;
   document.getElementById('cat-banner-img').src = currentCategory.image || 'RoomServiceLogo.jpg';
+  document.getElementById('cat-banner-img').onerror = function(){ this.onerror=null; this.src='RoomServiceLogo.jpg'; };
   document.getElementById('cat-banner-bg').src = currentCategory.image || 'RoomServiceLogo.jpg';
+  document.getElementById('cat-banner-bg').onerror = function(){ this.onerror=null; this.src='RoomServiceLogo.jpg'; };
   document.getElementById('cat-search').value = '';
   updateGammeUI();
   renderCategoryProducts();
@@ -499,7 +782,7 @@ document.addEventListener("DOMContentLoaded", function () {
    mediaZone.innerHTML = `<video autoplay loop muted playsinline controls><source src="${currentProd.video}" type="video/mp4"></video>`;
    showProductVideoControls();
   } else {
-   mediaZone.innerHTML = `<img src="${productImage(currentProd)}" alt="${currentProd.name}">`;
+   mediaZone.innerHTML = `<img src="${productImage(currentProd)}" alt="${currentProd.name}" onerror="this.onerror=null;this.src='RoomServiceLogo.jpg'">`;
    hideProductVideoControls();
   }
 
@@ -515,7 +798,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("p-from").innerText = money(firstPrice(currentProd));
   document.getElementById("p-media-count").innerText = `${mediaCount(currentProd)} média${mediaCount(currentProd) > 1 ? 's' : ''}`;
   document.getElementById("p-format-count").innerText = `${currentProd.tarifs?.length || 0} format${(currentProd.tarifs?.length || 0) > 1 ? 's' : ''}`;
-  document.getElementById("p-desc").innerHTML = currentProd.description ? currentProd.description.split("\\n").join("<br>") : "Fiche catalogue avec visuel, farm, formats disponibles et médias associés.";
+  document.getElementById("p-desc").textContent = currentProd.description || "Fiche catalogue avec visuel, farm, formats disponibles et médias associés.";
   syncProductFavoriteButton();
 
   const vZone = document.getElementById("variants-zone");
