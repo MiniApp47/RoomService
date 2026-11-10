@@ -284,7 +284,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         ]
     },
-    {
+      {
         "id": "NEIGE",
         "name": "Neige",
         "type": "Neige",
@@ -477,7 +477,6 @@ document.addEventListener("DOMContentLoaded", function () {
  let selectedSubtype = 'ALL';
  window.lastListPage = "home";
 
- const contactUrl = String(ROOM_SERVICE_CONFIG?.telegram || "").replace(/\/$/, "");
 
  function money(n) {
   return Number(n || 0).toFixed(2).replace(".00", "") + "€";
@@ -922,19 +921,70 @@ document.addEventListener("DOMContentLoaded", function () {
 
  function renderCheckout() {
   const items = document.getElementById("checkout-items");
-  if (!cart.length) { items.innerHTML = "Aucun produit dans la sélection."; document.getElementById("checkout-total").innerText = "Total indicatif : 0€"; return; }
+  const totalElement = document.getElementById("checkout-total");
+  const sendButton = document.getElementById("send-request-btn");
+  if (!cart.length) {
+   items.textContent = "Aucun produit dans la sélection.";
+   totalElement.innerText = "Total indicatif : 0€";
+   if (sendButton) sendButton.disabled = true;
+   return;
+  }
+  // Le récapitulatif reste affiché à l'écran, puis la personne confirme l'envoi elle-même.
   items.innerHTML = cart.map(i => `• ${i.name} — ${i.weight} x${i.qty} — ${money(i.tot)}`).join("<br>");
-  document.getElementById("checkout-total").innerText = "Total indicatif : " + money(cart.reduce((s,i)=>s+i.tot,0));
+  totalElement.innerText = "Total indicatif : " + money(cart.reduce((s,i)=>s+i.tot,0));
+  if (sendButton) sendButton.disabled = false;
+ }
+
+ // Prépare le texte pour le compte WhatsApp officiel (CBD légal, selon l'exploitant).
+ function buildWhatsAppSelectionMessage() {
+  const lines = [
+   "♛ ROOM SERVICE 51 ♛",
+   "Bonjour, voici ma sélection CBD :",
+   ""
+  ];
+  cart.forEach((item, index) => {
+   lines.push(`${index + 1}. ${item.name}`);
+   lines.push(`   ${item.weight} × ${item.qty} — ${money(item.tot)}`);
+  });
+  lines.push("");
+  lines.push(`Total indicatif : ${money(cart.reduce((sum, item) => sum + item.tot, 0))}`);
+  lines.push(`Mode souhaité : ${checkoutMode}`);
+  const note = document.getElementById("address-field")?.value.trim();
+  if (note) lines.push(`Précisions : ${note}`);
+  lines.push("");
+  lines.push("Pouvez-vous me confirmer la disponibilité ? Merci.");
+  return lines.join("\n");
+ }
+
+ // Ouvrir un lien extérieur depuis Telegram Mini App ou un navigateur classique.
+ function openWhatsAppUrl(url) {
+  try {
+   if (typeof window.Telegram?.WebApp?.openLink === "function") {
+    window.Telegram.WebApp.openLink(url);
+    return;
+   }
+  } catch (error) {
+   console.warn("Ouverture externe Telegram non disponible :", error);
+  }
+  window.location.href = url;
  }
 
  document.getElementById("send-request-btn")?.addEventListener("click", () => {
-  const note = document.getElementById("address-field").value.trim();
-  const lines = cart.map(i => `- ${i.name} | ${i.weight} x${i.qty} | ${money(i.tot)}`).join("\n");
-  const total = money(cart.reduce((s,i)=>s+i.tot,0));
-  const msg = `Salut, je voudrais des infos sur ma sélection catalogue.\n\nMode : ${checkoutMode}\n${lines}\n\nTotal indicatif : ${total}${note ? "\n\nNote : " + note : ""}`;
-  if (!contactUrl) { try { tg.showAlert("Le contact Telegram officiel n'est pas encore configuré."); } catch(e) {} return; }
-  window.open(contactUrl + "?text=" + encodeURIComponent(msg), "_blank");
+  if (!cart.length) {
+   tg.showAlert?.("Ta sélection est vide.");
+   return;
+  }
+  const phone = String(ROOM_SERVICE_CONFIG.whatsappNumber || "").replace(/\D/g, "");
+  if (!/^[1-9]\d{7,14}$/.test(phone)) {
+   tg.showAlert?.("Le numéro WhatsApp n'est pas encore configuré.");
+   return;
+  }
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(buildWhatsAppSelectionMessage())}`;
+  openWhatsAppUrl(url);
+  haptic("medium");
  });
+
+
 
  document.querySelectorAll(".nav-btn").forEach(btn => btn.addEventListener("click", () => {
   const page = btn.dataset.target.replace("page-", "");

@@ -766,6 +766,7 @@
   .rs-cat-only .cat-card img { width:94px; height:94px; }
   .rs-cat-only .cat-card .title { font:600 1.5rem 'Cormorant Garamond',serif; color:#f7e0bc; }
   .rs-category-help { margin:3px 22px 29px; color:#d0b78c; font-size:.78rem; line-height:1.65; text-align:center; }
+  .checkout-wa-btn:disabled { opacity: .45; cursor: not-allowed; filter: grayscale(.5); }
 </style>
 </head>
 <body>
@@ -938,12 +939,12 @@
   <div id="cart-list" style="padding-top:18px; padding-bottom:170px"></div>
   <div class="cart-sticky">
    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-weight:1000"><span id="cart-recap-text">Total (0)</span><span id="cart-total-display">0€</span></div>
-   <button class="btn-main" style="width:100%" onclick="navigate('checkout')">Préparer ma demande</button>
+   <button class="btn-main" style="width:100%" onclick="navigate('checkout')">Voir le récapitulatif</button>
   </div>
  </div>
 
  <div id="page-checkout" class="page">
-  <div class="app-header"><button class="back-btn" onclick="navigate('cart')">‹</button><div class="app-title">Ma demande</div><div style="width:42px"></div></div>
+  <div class="app-header"><button class="back-btn" onclick="navigate('cart')">‹</button><div class="app-title">Récapitulatif</div><div style="width:42px"></div></div>
   <div class="panel">
    <div class="tiny" style="text-transform:uppercase;font-weight:1000;margin-bottom:10px">Mode</div>
    <div class="mode-grid">
@@ -956,9 +957,12 @@
    <b>Récapitulatif</b>
    <div id="checkout-items" style="font-size:.9rem;line-height:1.7;margin:14px 0"></div>
    <div id="checkout-total" style="font-weight:1000;margin-bottom:12px">Total indicatif : 0€</div>
-   <textarea class="address-input" id="address-field" rows="4" placeholder="Note optionnelle pour le support..."></textarea>
-   <p class="tiny">Si un contact officiel est configuré, le bouton prépare un message Telegram.</p>
-   <button class="btn-main" id="send-request-btn" style="width:100%;margin-top:12px">Ouvrir Telegram</button>
+   <textarea class="address-input" id="address-field" rows="4" placeholder="Précisions facultatives (ville, instructions, etc.)..."></textarea>
+   <button type="button" class="btn-main checkout-wa-btn" id="send-request-btn" style="width:100%;margin-top:16px;background:#25D366;color:#082514;" disabled>
+    <svg aria-hidden="true" width="20" height="20" style="vertical-align:middle;margin-right:7px"><use href="#icon-whatsapp"></use></svg>
+    Envoyer ma sélection sur WhatsApp
+   </button>
+   <p class="tiny" style="margin-top:11px">WhatsApp s'ouvrira avec un message prérempli. Vérifie-le et appuie sur « Envoyer » pour le transmettre.</p>
   </div>
  </div>
 
