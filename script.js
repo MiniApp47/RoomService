@@ -935,11 +935,11 @@ document.addEventListener("DOMContentLoaded", function () {
   if (sendButton) sendButton.disabled = false;
  }
 
- // Prépare le texte pour le compte WhatsApp officiel (CBD légal, selon l'exploitant).
+ // Prépare le texte pour le compte WhatsApp officiel ( légal, selon l'exploitant).
  function buildWhatsAppSelectionMessage() {
   const lines = [
    "♛ ROOM SERVICE 51 ♛",
-   "Bonjour, voici ma sélection CBD :",
+   "Bonjour, voici ma sélection :",
    ""
   ];
   cart.forEach((item, index) => {
