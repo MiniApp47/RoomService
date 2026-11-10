@@ -21,7 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
     telegram: "",   // Exemple : https://t.me/votre_compte_officiel
     channel: "",    // Canal Telegram officiel
     instagram: "",  // Instagram officiel
-    snapchat: ""    // Snapchat officiel
+    snapchat: "",   // Snapchat officiel
+    whatsappUsername: "theroom_service1", // Lien de contact WhatsApp (si ce nom est activé)
+    whatsappNumber: "33775038086" // Numéro WhatsApp international (07 75 03 80 86)
   };
 
     // ===========================================================
@@ -79,12 +81,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 "products": [
                     {
                         "id": "hash-filtre-120u",
-                        "name": "🍫🔥 HASH FILTRÉ 120U",
+                        "name": "💂 El général",
                         "farm": "🏡 NO FARM",
                         "type": "Hash Filtré",
-                        "image": "",
-                        "video": "",
-                        "description": `🍫🔥 …. - Hash Filtré
+                        "image": "ProductEL.jpg",
+                        "video": "VideoEL.mov",
+                        "description": `💂 El général
 🤯 120U - Format 100g 🤯
 🚜🇲🇦 Provenance Ketama, NO FARM 🚜
 🧈 Profil plus gras, texture souple, riche en arôme 
@@ -256,13 +258,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 "symbol": "🇺🇸",
                 "products": [
                     {
-                        "id": "tropicana-cherry-4",
-                        "name": "🌴 TROPICANA CHERRY 4.0",
+                        "id": "Window Shoper x Tropicana Cherry",
+                        "name": "🌴 Window Shoper x Tropicana Cherry",
                         "farm": "🚜 SIMPSONS FARMS 🚜",
                         "type": "Cali USA",
                         "image": "ProductTC.jpg",
-                        "video": "VideoTC.mp4",
-                        "description": `🌴 TROPICANA CHERRY 4.0 🌴
+                        "video": "VideoTC.mov",
+                        "description": `🌴 Window Shoper x Tropicana Cherry 🌴
 🇺🇸💎 Cali US - 60% Sativa / 40% Indica 🇺🇸💎
 🚜 SIMPSONS FARMS 🚜
 🍒🍹Notes fruitées et  arômes cerises 🍹🍒
@@ -417,18 +419,34 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 ];
 
- // Contacts : affichés uniquement si les liens officiels sont renseignés ci-dessus.
- const officialContacts = [
-  { key: "telegram", name: "Telegram", icon: "icon-telegram" },
+  // Accès WhatsApp : contact général uniquement (sans détails de sélection).
+  // La documentation WhatsApp confirme le lien wa.me/nom_utilisateur pour les comptes activés.
+  // Pour un texte prérempli fiable : renseigner whatsappNumber (chiffres internationaux).
+  const WHATSAPP_CONTACT_TEXT = "Bonjour, j’aimerais avoir des renseignements sur Room Service 51.";
+  function whatsappContactLink() {
+   const phone = String(ROOM_SERVICE_CONFIG.whatsappNumber || "").replace(/\s/g, "");
+   if (/^[1-9]\d{7,14}$/.test(phone)) {
+    return `https://wa.me/${phone}?text=${encodeURIComponent(WHATSAPP_CONTACT_TEXT)}`;
+   }
+   const username = String(ROOM_SERVICE_CONFIG.whatsappUsername || "").replace(/^@/, "").trim();
+   return /^[A-Za-z0-9_.]{3,64}$/.test(username)
+     ? `https://wa.me/${username}` : "";
+  }
+
+  // Contacts : affichés uniquement si un lien officiel valide est renseigné.
+  const officialContacts = [
+   { key: "whatsapp", name: "WhatsApp", icon: "icon-whatsapp" },
+   { key: "telegram", name: "Telegram", icon: "icon-telegram" },
   { key: "instagram", name: "Instagram", icon: "icon-instagram" },
   { key: "channel", name: "Canal Telegram", icon: "icon-telegram" },
   { key: "snapchat", name: "Snapchat", icon: "ic-star" }
  ];
  const linksDiv = document.getElementById("official-contact-links");
  if (linksDiv) {
-  const validContacts = officialContacts.map(c => ({...c, url: String(ROOM_SERVICE_CONFIG?.[c.key] || "").trim()}))
-    .filter(c => /^https:\/\//i.test(c.url));
-  linksDiv.innerHTML = validContacts.map(c => `<a class="contact-link" href="${escapeURL(c.url)}" target="_blank" rel="noopener noreferrer"><span class="contact-icon"><svg width="22" height="22"><use href="#${c.icon}"/></svg></span><div><b>${c.name}</b><span>Compte officiel</span></div></a>`).join("");
+  const validContacts = officialContacts.map(c => ({...c, url:
+     c.key === "whatsapp" ? whatsappContactLink() : String(ROOM_SERVICE_CONFIG?.[c.key] || "").trim()
+   })).filter(c => /^https:\/\//i.test(c.url));
+  linksDiv.innerHTML = validContacts.map(c => `<a class="contact-link ${c.key === 'whatsapp' ? 'contact-whatsapp' : ''}" href="${escapeURL(c.url)}" target="_blank" rel="noopener noreferrer"><span class="contact-icon"><svg width="22" height="22"><use href="#${c.icon}"/></svg></span><div><b>${c.name}</b><span>${c.key === 'whatsapp' ? 'Contact direct · @theroom_service1' : 'Compte officiel'}</span></div></a>`).join("");
   const waiting = document.getElementById("contact-awaiting");
   if (waiting) waiting.hidden = validContacts.length > 0;
  }
