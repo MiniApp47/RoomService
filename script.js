@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         "name": "💂 El général",
                         "farm": "🏡 NO FARM",
                         "type": "Hash Filtré",
-                        "image": "ProductEL.jpg",
+                        "image": "ProductEL.png",
                         "video": "VideoEL.mov",
                         "description": `💂 El général
 🤯 120U - Format 100g 🤯
